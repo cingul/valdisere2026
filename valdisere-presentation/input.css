@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@source "./src/**/*.rs";
+
+@theme {
+  --color-brand-black: #000000;
+  --color-brand-dark: #02182b;
+  --color-brand-orange: #f05708;
+  --color-brand-green: #283e28;
+  --color-brand-taupe: #c5b7ab;
+  --color-brand-light: #e7e5da;
+  --font-sans: "Inter", "Roboto", sans-serif;
+}

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STANDUP - Val d'Isère 2026</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Outfit:wght@300;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            orange: '#F05708',
+                            dark: '#0A0A0A',
+                            green: '#283E28',
+                            light: '#F5F5F0',
+                            taupe: '#C5B7AB',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-brand-dark text-brand-light font-sans antialiased selection:bg-brand-orange/30 selection:text-white">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 left-0 right-0 h-16 bg-brand-dark/90 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-8 z-50">
+        <a href="#intro"
+            class="font-display font-black text-xl tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-red-500 hover:brightness-125 transition-all">
+            STANDUP
+        </a>
+        <div class="hidden md:flex items-center gap-1 text-sm font-medium text-zinc-400">
+            <a href="#intro" class="hover:text-white px-3 py-2 transition-colors">Home</a>
+            <a href="#motivation" class="hover:text-white px-3 py-2 transition-colors">Motivation</a>
+            <a href="#background" class="hover:text-white px-3 py-2 transition-colors">Background</a>
+            <a href="#methods" class="hover:text-white px-3 py-2 transition-colors">Methods</a>
+            <a href="#results" class="hover:text-white px-3 py-2 transition-colors">Results</a>
+            <a href="#discussion" class="hover:text-white px-3 py-2 transition-colors">Discussion</a>
+            <a href="#future" class="hover:text-white px-3 py-2 transition-colors">Future</a>
+            <a href="#video" class="hover:text-white px-3 py-2 transition-colors">Video</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+
+        <!-- Intro Section -->
+        <section id="intro" class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                <div
+                    class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-brand-green/20 rounded-full blur-[100px] animate-pulse-slow">
+                </div>
+                <div
+                    class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-brand-orange/10 rounded-full blur-[100px] animate-pulse-slow">
+                </div>
+            </div>
+
+            <div class="z-10 flex flex-col items-center text-center space-y-8 animate-[fadeInUp_1s_ease-out]">
+                <h1
+                    class="font-display text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-brand-orange via-orange-500 to-amber-500 drop-shadow-[0_0_35px_rgba(240,87,8,0.4)]">
+                    The STANDUP Study
+                </h1>
+                <h2
+                    class="text-2xl md:text-4xl font-light text-brand-taupe tracking-widest uppercase border-b border-brand-green pb-6">
+                    Venous Stenting in OH
+                </h2>
+
+                <div class="flex space-x-3 py-4">
+                    <div class="w-4 h-4 rounded-full bg-brand-orange shadow-[0_0_15px_rgba(240,87,8,0.8)]"></div>
+                    <div class="w-4 h-4 rounded-full bg-brand-green shadow-[0_0_15px_rgba(40,62,40,0.8)]"></div>
+                    <div class="w-4 h-4 rounded-full bg-brand-taupe shadow-[0_0_15px_rgba(197,183,171,0.8)]"></div>
+                </div>
+
+                <div
+                    class="flex flex-col items-center mt-12 bg-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/5">
+                    <img src="assets/ina-logo.png" alt="Interventional Neuro Associates"
+                        class="h-24 md:h-32 mb-6 object-contain bg-white p-4 rounded-xl">
+                    <div class="text-xl md:text-2xl font-medium text-brand-taupe/80">
+                        <div class="font-bold text-brand-light mb-1">Karthikeyan Arcot, MD</div>
+                        <div>Interventional Neurology</div>
+                        <div>Interventional Neuro Associates</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OH Definition Section -->
+        <section id="definition"
+            class="min-h-screen flex flex-col justify-center items-center px-8 py-24 bg-zinc-950 relative overflow-hidden">
+            <!-- Background Elements -->
+            <div
+                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]">
+            </div>
+
+            <div class="z-10 w-full max-w-6xl mx-auto text-center mb-12">
+                <h2
+                    class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-brand-taupe mb-4 font-display">
+                    What is Orthostatic Hypotension?
+                </h2>
+                <div class="h-1 w-24 bg-brand-orange rounded-full mx-auto"></div>
+            </div>
+
+            <div class="z-10 flex flex-col md:flex-row items-center justify-center gap-16 w-full max-w-5xl">
+
+                <!-- Animation Stage -->
+                <div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+                    <!-- Posture Images (Absolute Stacked) -->
+                    <!-- Note: Using generated filenames with timestamp logic might be safer if I knew them, but I moved them to 'posture_*.png' -->
+                    <img src="assets/posture_supine.png" id="img-supine"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-[2000ms] opacity-100 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        alt="Supine Position">
+                    <img src="assets/posture_sitting.png" id="img-sitting"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-[2000ms] opacity-0 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        alt="Sitting Position">
+                    <img src="assets/posture_standing.png" id="img-standing"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-[2000ms] opacity-0 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        alt="Standing Position">
+                </div>
+
+                <!-- Stats Display -->
+                <div class="flex flex-col items-center md:items-start space-y-6">
+                    <div class="text-brand-taupe text-xl tracking-widest uppercase font-medium transition-all duration-500"
+                        id="posture-label">Lying Down</div>
+
+                    <div class="bg-zinc-900/80 p-8 rounded-3xl border border-white/10 backdrop-blur-md min-w-[280px]">
+                        <div class="text-sm text-brand-light/60 uppercase tracking-wider mb-2">Systolic BP</div>
+                        <div class="flex items-baseline gap-2">
+                            <span id="bp-value"
+                                class="text-7xl font-black text-white tabular-nums transition-colors duration-500">140</span>
+                            <span class="text-2xl text-brand-taupe font-bold">mmHg</span>
+                        </div>
+                    </div>
+
+                    <div id="bp-annotation"
+                        class="opacity-0 transition-opacity duration-500 text-red-500 font-bold text-xl flex items-center gap-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        <span>Significant Drop</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Motivation Section -->
+        <section id="motivation" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 bg-zinc-900/50">
+            <div class="mb-16">
+                <h2
+                    class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400 mb-4 font-display">
+                    Motivation</h2>
+                <div class="h-1 w-32 bg-brand-orange rounded-full"></div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Text Content -->
+                <div class="flex-1 space-y-8">
+                    <div class="p-8 bg-brand-green/10 rounded-3xl border border-brand-green/30">
+                        <h3 class="text-3xl font-bold text-brand-orange mb-6 font-display">The Problem</h3>
+                        <p class="text-xl text-brand-light leading-relaxed mb-6">
+                            Orthostatic Hypotension (OH) affects <span class="text-white font-bold">16-30% of older
+                                adults</span>, carrying severe morbidity including increased risk of falls, atrial
+                            fibrillation, venous thromboembolism, and chronic kidney disease.
+                        </p>
+                        <p class="text-xl text-brand-light leading-relaxed">
+                            Current pharmacological treatments (Midodrine, Fludrocortisone, Droxidopa) are often <span
+                                class="text-red-400 font-bold">inadequate</span>, providing only transient relief while
+                            introducing significant side effects such as supine hypertension and heart failure. This
+                            therapeutic gap leaves millions vulnerable.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Economic Impact (Animated) -->
+                <div class="flex-1 flex flex-col justify-center space-y-8">
+                    <h3 class="text-3xl font-bold text-white font-display">Economic Impact</h3>
+
+                    <!-- Counter 1 -->
+                    <div class="p-8 bg-zinc-900 rounded-3xl border border-white/10 relative overflow-hidden group">
+                        <div class="text-sm text-brand-taupe uppercase tracking-widest mb-2">Total Medicare Spending
+                            (Est.)</div>
+                        <div class="text-5xl md:text-7xl font-black text-white transition-colors duration-500 tabular-nums min-w-[12ch] inline-block"
+                            id="counter-total">
+                            $0
+                        </div>
+                    </div>
+
+                    <!-- Counter 2 -->
+                    <div class="p-8 bg-zinc-900 rounded-3xl border border-white/10 relative overflow-hidden group">
+                        <div class="text-sm text-brand-taupe uppercase tracking-widest mb-2">Annual Part D Rx Spending
+                        </div>
+                        <div class="text-4xl md:text-6xl font-black text-white transition-colors duration-500 tabular-nums min-w-[9ch] inline-block"
+                            id="counter-rx">
+                            $0
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Background Section (Expanded) -->
+        <section id="background" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24">
+            <div class="mb-16 text-center">
+                <h2
+                    class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400 mb-4 font-display">
+                    Physiological Rationale</h2>
+                <div class="h-1 w-32 bg-brand-orange rounded-full mx-auto mb-8"></div>
+                <p class="text-xl text-brand-taupe max-w-4xl mx-auto leading-relaxed">
+                    Systemic arterial pressure is maintained via a complex orchestration of physical, chemical, and
+                    biological processes. We propose that supracardiac venous outflow impairment disrupts this
+                    regulation via several interconnected mechanisms.
+                </p>
+            </div>
+
+            <div class="space-y-32 max-w-7xl mx-auto">
+
+                <!-- Point 1: Baroreflex -->
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1">
+                        <img src="assets/baroreflex.png" alt="Baroreflex Circuit"
+                            class="w-full rounded-2xl shadow-2xl border border-white/10 hover:border-brand-orange/50 transition-all duration-500">
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <h3 class="text-3xl font-bold text-brand-orange">1. Baroreflex & Metabolite Clearance</h3>
+                        <p class="text-lg text-brand-light leading-relaxed">
+                            The body’s primary defense against OH is the baroreflex. Baroreceptors in the carotid sinus
+                            and aortic arch detect pressure changes, transmitting signals to the NTS in the brainstem.
+                            The medulla then modulates sympathetic outflow to adjust heart rate and vascular tone [15].
+                        </p>
+                        <p class="text-lg text-brand-taupe leading-relaxed">
+                            Efficiency depends on proper metabolite clearance (Fick principle), where removal is
+                            proportional to blood flow. Impaired venous outflow disrupts this coordination, exacerbating
+                            OH [16].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 2: Venous Return -->
+                <div class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="flex-1">
+                        <img src="assets/venous_return.png" alt="Venous Return Equation"
+                            class="w-full rounded-2xl shadow-2xl border border-white/10 hover:border-brand-orange/50 transition-all duration-500">
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <h3 class="text-3xl font-bold text-brand-orange">2. Venous Return Dynamics</h3>
+                        <p class="text-lg text-brand-light leading-relaxed">
+                            Venous return (VR) is defined as the difference between mean systemic filling pressure
+                            ($P_{msf}$) and right atrial pressure ($RAP$), divided by resistance to venous return
+                            ($R_{VR}$):
+                        </p>
+                        <div class="bg-white/5 p-6 rounded-xl border border-white/10 text-center my-4">
+                            <span class="text-2xl md:text-4xl font-serif italic text-brand-light">VR = <span
+                                    class="text-brand-orange">P<sub>msf</sub> - RAP</span> / R<sub>VR</sub></span>
+                        </div>
+                        <p class="text-lg text-brand-taupe leading-relaxed">
+                            Gravity causes pooling of >500ml of blood in the upright position. Standard physiological
+                            compensation fails when venous valvular stenoses impede flow, directly increasing $R_{VR}$
+                            and decreasing cardiac output by nearly 20% [3, 19].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 3: Vestibulo-Sympathetic -->
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1">
+                        <img src="assets/vestibulo.png" alt="Vestibulo-Sympathetic Reflex"
+                            class="w-full rounded-2xl shadow-2xl border border-white/10 hover:border-brand-orange/50 transition-all duration-500">
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <h3 class="text-3xl font-bold text-brand-orange">3. Vestibulo-Sympathetic Reflex</h3>
+                        <p class="text-lg text-brand-light leading-relaxed">
+                            This reflex integrates vestibular inputs to <strong>anticipate</strong> postural changes
+                            [20]. In OH patients, venous congestion leads to poor metabolite clearance in the rostral
+                            ventrolateral medulla.
+                        </p>
+                        <p class="text-lg text-brand-taupe leading-relaxed">
+                            This causes "Sympathetic Anticipation Failure"—an inability to activate vasoconstriction
+                            <em>prior</em> to standing, resulting in exaggerated blood pressure drops [15].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 4: Static Venous Tone -->
+                <div class="flex flex-col lg:flex-row-reverse gap-12 items-center">
+                    <div class="flex-1">
+                        <img src="assets/venous_tone.png" alt="Static Venous Tone"
+                            class="w-full rounded-2xl shadow-2xl border border-white/10 hover:border-brand-orange/50 transition-all duration-500">
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <h3 class="text-3xl font-bold text-brand-orange">4. Static Venous Tone</h3>
+                        <p class="text-lg text-brand-light leading-relaxed">
+                            We suspect venous tone in OH patients becomes <strong>static</strong>, failing to adjust
+                            dynamically. This creates a paradox: excessive constriction in supine (Supine Hypertension)
+                            and inadequate constriction in standing (Orthostatic Hypotension) [21].
+                        </p>
+                        <p class="text-lg text-brand-taupe leading-relaxed">
+                            Alleviating obstruction may restore dynamic tone, treating biomechanical failure at its
+                            source [19].
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Point 5: Glymphatic System -->
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <div class="flex-1">
+                        <img src="assets/glymphatic.png" alt="Glymphatic Clearance"
+                            class="w-full rounded-2xl shadow-2xl border border-white/10 hover:border-brand-orange/50 transition-all duration-500">
+                    </div>
+                    <div class="flex-1 space-y-6">
+                        <h3 class="text-3xl font-bold text-brand-orange">5. Glymphatic Clearance</h3>
+                        <p class="text-lg text-brand-light leading-relaxed">
+                            The glymphatic system clears metabolic waste along perivenous spaces. Venous engorgement
+                            constricts these spaces, impeding drainage [19].
+                        </p>
+                        <p class="text-lg text-brand-taupe leading-relaxed">
+                            According to the Fick principle [16], slowed microcirculation reduces metabolite removal
+                            from critical brainstem centers. Restoring outflow via stenting re-sensitizes these
+                            autonomic centers.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Methods Section -->
+        <section id="methods" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 bg-zinc-900/50">
+            <div class="mb-16">
+                <div class="flex items-center gap-4 mb-4">
+                    <h2
+                        class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400 font-display">
+                        Methodology</h2>
+                    <span
+                        class="px-4 py-1 rounded-full bg-brand-green/20 border border-brand-green text-brand-light text-sm font-bold tracking-wide uppercase">IRB
+                        Approved Jan 2025</span>
+                </div>
+                <div class="h-1 w-32 bg-brand-orange rounded-full"></div>
+            </div>
+
+            <div class="space-y-24">
+
+                <!-- Definition & Design -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-brand-orange to-red-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200">
+                        </div>
+                        <img src="assets/oh_definition.png" alt="OH Definition"
+                            class="relative rounded-2xl shadow-2xl border border-white/10 w-full">
+                    </div>
+                    <div class="space-y-8">
+                        <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                            <h3 class="text-2xl font-bold text-white mb-4">Trial Design</h3>
+                            <ul class="space-y-3 text-lg text-brand-taupe">
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 rounded-full bg-brand-orange mr-3"></span>Prospective Registry
+                                </li>
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 rounded-full bg-brand-orange mr-3"></span>Single-arm, Unblinded
+                                </li>
+                                <li class="flex items-center"><span
+                                        class="w-2 h-2 rounded-full bg-brand-orange mr-3"></span>Site: St. Francis
+                                    Hospital and Heart Center
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                            <h3 class="text-2xl font-bold text-white mb-4">Inclusion Criteria</h3>
+                            <p class="text-lg text-brand-light leading-relaxed">
+                                Patients with <span class="text-brand-orange font-bold">Intractable Orthostatic
+                                    Hypotension</span> refractory to maximum possible medical management.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Details (Videos) -->
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-8 font-display">Technical Protocol</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Card 1: Venography -->
+                        <div
+                            class="group bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden hover:border-brand-orange/50 transition-all">
+                            <div class="aspect-[4/3] bg-black relative">
+                                <video src="assets/venogram.mov" autoplay loop muted playsinline
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"></video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 font-bold text-white text-lg">Diagnostics</div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-brand-orange font-bold text-xl mb-2">Venography</h4>
+                                <p class="text-sm text-brand-taupe">Assessment of stenosis severity, reflux, and
+                                    collateral circulation patterns.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: IVUS -->
+                        <div
+                            class="group bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden hover:border-brand-orange/50 transition-all">
+                            <div class="aspect-[4/3] bg-black relative">
+                                <video src="assets/ivus.mp4" autoplay loop muted playsinline
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"></video>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 font-bold text-white text-lg">Imaging</div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-brand-orange font-bold text-xl mb-2">IVUS</h4>
+                                <p class="text-sm text-brand-taupe">Intravascular Ultrasound for precise sizing, valve
+                                    characterization, and stenosis grading.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Waveform -->
+                        <div
+                            class="group bg-zinc-900 rounded-2xl border border-white/10 overflow-hidden hover:border-brand-orange/50 transition-all">
+                            <div class="aspect-[4/3] bg-black relative">
+                                <img src="assets/waveform.png"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 font-bold text-white text-lg">Physiology</div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-brand-orange font-bold text-xl mb-2">Pressure Analysis</h4>
+                                <p class="text-sm text-brand-taupe">Waveform analysis to detect trans-stenotic gradients
+                                    (>3mmHg) and blunted cardiac pulsatility.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endpoints -->
+                <div class="bg-brand-green/10 rounded-3xl p-12 border border-brand-green/20">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center font-display">Study Endpoints</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div
+                                class="w-16 h-16 bg-brand-orange/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-orange">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2">Hemodynamics</h4>
+                            <p class="text-brand-taupe">Improvement in Orthostatic Blood Pressures (Systolic/Diastolic)
+                            </p>
+                        </div>
+                        <div>
+                            <div
+                                class="w-16 h-16 bg-brand-orange/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-orange">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2">Medication Reduction</h4>
+                            <p class="text-brand-taupe">Reduction in daily pressor requirements (MEQ)</p>
+                        </div>
+                        <div>
+                            <div
+                                class="w-16 h-16 bg-brand-orange/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-orange">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2">Patient Outcomes</h4>
+                            <p class="text-brand-taupe">Clinical Global Impression - Improvement (CGI-I)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Results Section (COMPLEX) -->
+        <section id="results" class="min-h-screen flex flex-col px-8 md:px-24 py-24">
+            <div class="flex flex-wrap justify-between items-end mb-12 gap-8">
+                <div>
+                    <h2
+                        class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400 mb-4 font-display">
+                        Study Results</h2>
+                    <div class="flex space-x-4 mt-8">
+                        <button onclick="switchTab('hemo')" id="tab-hemo"
+                            class="px-6 py-2 rounded-full border border-brand-orange bg-brand-orange text-brand-dark font-bold transition-all">Hemodynamics</button>
+                        <button onclick="switchTab('meds')" id="tab-meds"
+                            class="px-6 py-2 rounded-full border border-white/20 text-brand-taupe hover:text-white transition-all">Medication</button>
+                        <button onclick="switchTab('clinical')" id="tab-clinical"
+                            class="px-6 py-2 rounded-full border border-white/20 text-brand-taupe hover:text-white transition-all">Clinical
+                            Outcomes</button>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <div class="text-brand-taupe text-sm uppercase tracking-widest">N=37 Cohort</div>
+                </div>
+            </div>
+
+            <!-- Tab: Hemodynamics -->
+            <div id="view-hemo" class="tab-content flex-1 grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Metrics -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div class="p-6 bg-brand-green/10 rounded-2xl border border-brand-green/30">
+                        <h3 class="text-sm font-bold text-brand-orange uppercase mb-4">Systolic Drop</h3>
+                        <div class="space-y-1">
+                            <div class="text-xs text-brand-taupe uppercase">Pre-Intervention</div>
+                            <div class="text-4xl font-mono font-bold text-red-400" id="stat-pre-drop">-- mmHg</div>
+                        </div>
+                        <div class="h-px bg-white/10 my-4"></div>
+                        <div class="space-y-1">
+                            <div class="text-xs text-brand-taupe uppercase">Post-Intervention</div>
+                            <div class="text-4xl font-mono font-bold text-brand-green" id="stat-post-drop">-- mmHg</div>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-2xl text-sm text-brand-taupe italic">
+                        Significant hemodynamic stabilization observed across the cohort.
+                    </div>
+                </div>
+                <!-- Charts -->
+                <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/10 h-96">
+                        <canvas id="chart-bp"></canvas>
+                    </div>
+                    <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/10 h-96">
+                        <canvas id="chart-hr"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Medication -->
+            <div id="view-meds" class="tab-content hidden flex-1 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <div class="text-8xl font-black text-white" id="stat-meq-rec">--%</div>
+                        <div class="text-3xl text-brand-green mt-2 font-bold">Reduction in Medication</div>
+                    </div>
+                    <p class="text-xl text-brand-taupe leading-relaxed">
+                        Midodrine Equivalent Dose (MEQ) significantly decreased post-intervention, indicating reduced
+                        pharmaceutical dependence.
+                    </p>
+                </div>
+                <div class="bg-zinc-900/50 p-6 rounded-2xl border border-white/10 h-96">
+                    <canvas id="chart-meq"></canvas>
+                </div>
+            </div>
+
+            <!-- Tab: Clinical -->
+            <div id="view-clinical" class="tab-content hidden flex-1 flex flex-col">
+                <div class="text-center mb-12">
+                    <h2 class="text-2xl text-white font-bold mb-2">Clinical Global Impression - Improvement (CGI-I)</h2>
+                    <p class="text-brand-taupe">1 = Very Much Improved, 2 = Much Improved</p>
+                </div>
+                <div class="bg-zinc-900/50 p-8 rounded-2xl border border-white/10 h-96 w-full max-w-5xl mx-auto">
+                    <canvas id="chart-cgi"></canvas>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Discussion Section -->
+        <section id="discussion" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 bg-zinc-900/50">
+            <div class="mb-16">
+                <h2
+                    class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-orange-400 mb-4 font-display">
+                    Discussion</h2>
+                <div class="h-1 w-32 bg-brand-orange rounded-full"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-12">
+                <!-- Hypothesis/Theme Statement -->
+                <div
+                    class="animate-on-scroll p-10 bg-gradient-to-br from-zinc-900 to-black border border-brand-orange/40 rounded-3xl relative overflow-hidden group shadow-2xl shadow-brand-orange/10">
+                    <div
+                        class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity duration-700">
+                        <svg class="w-64 h-64 text-brand-orange transform rotate-12" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-brand-orange flex items-center justify-center text-black shadow-lg shadow-brand-orange/50">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-4xl font-black text-white tracking-tight">A New Therapeutic Pathway</h3>
+                        </div>
+                        <p class="text-3xl text-brand-light font-light leading-snug max-w-4xl">
+                            The data suggests that <span class="text-brand-orange font-bold">restoring venous
+                                outflow</span> offers a therapeutically effective adjunct—and potentially a
+                            substitute—for current pharmacologic treatments.
+                        </p>
+                    </div>
+
+                    <!-- Mechanism vs Suppression Graphic -->
+                    <div class="mt-32 mb-20 animate-on-scroll" data-delay="200">
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[500px] lg:h-[450px]">
+
+                            <!-- 1. Symptom Suppression (The Band-Aid) -->
+                            <div
+                                class="group relative rounded-3xl bg-zinc-900 border border-white/5 overflow-hidden transition-all duration-700 hover:flex-[1.1] flex-1 flex flex-col justify-center items-center text-center p-8">
+                                <div class="absolute inset-0 bg-pattern-grid opacity-5"></div>
+
+                                <!-- Icon: Compression/Squeeze -->
+                                <div
+                                    class="w-24 h-24 rounded-full bg-zinc-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                                    <svg class="w-12 h-12 text-zinc-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-3xl font-bold text-zinc-500 mb-2">Symptom Suppression</h3>
+                                <p class="text-zinc-600 mb-6 font-bold tracking-wide uppercase text-sm">Vasoconstrictors
+                                </p>
+
+                                <div class="space-y-3 max-w-xs mx-auto">
+                                    <p class="text-zinc-400 font-medium">Do not address the root cause.</p>
+                                    <p class="text-zinc-500 text-sm">Rely on systemic constriction to compensate for
+                                        local venous pooling.</p>
+                                </div>
+                            </div>
+
+                            <!-- 2. Mechanism Targeting (The Fix) -->
+                            <div
+                                class="group relative rounded-3xl bg-gradient-to-br from-brand-orange/90 to-orange-900 border border-brand-orange/30 overflow-hidden transition-all duration-700 flex-[1.5] hover:flex-[2] flex flex-col justify-center items-center text-center p-8 shadow-2xl shadow-brand-orange/20 ring-1 ring-white/10">
+                                <!-- Animated Background -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+
+                                <!-- Icon: Targeting/Precision -->
+                                <div
+                                    class="relative w-24 h-24 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 animate-pulse shadow-lg border border-white/20">
+                                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <h3 class="text-4xl font-black text-white mb-2 drop-shadow-md">Targets the Mechanism
+                                </h3>
+                                <p
+                                    class="text-orange-100 mb-6 font-bold tracking-wide uppercase text-sm bg-white/10 px-4 py-1 rounded-full">
+                                    Venous Outflow Restoration</p>
+
+                                <p class="text-white/90 font-medium text-lg mb-8 max-w-md">
+                                    Intervention corrects the <span
+                                        class="font-bold text-white border-b-2 border-white/30">underlying hemodynamic
+                                        defect</span> rather than masking it.
+                                </p>
+
+                                <!-- Integrated Key Findings (Proof of Mechanism) -->
+                                <div class="flex flex-col md:flex-row gap-3 w-full justify-center">
+                                    <div
+                                        class="bg-black/20 rounded-lg px-3 py-2 backdrop-blur-sm border border-white/10 flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-white text-xs font-bold">Flow Restored</span>
+                                    </div>
+                                    <div
+                                        class="bg-black/20 rounded-lg px-3 py-2 backdrop-blur-sm border border-white/10 flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                        </svg>
+                                        <span class="text-white text-xs font-bold">Meds Reduced</span>
+                                    </div>
+                                    <div
+                                        class="bg-black/20 rounded-lg px-3 py-2 backdrop-blur-sm border border-white/10 flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-white text-xs font-bold">Symptoms Improved</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Wrap Up / Clinical Implication -->
+                    <div class="animate-on-scroll mt-12 p-8 bg-zinc-800 border-l-4 border-brand-orange rounded-r-2xl"
+                        data-delay="600">
+                        <p class="text-2xl text-white font-light italic">
+                            "We are moving from <span class="text-brand-taupe line-through">managing symptoms</span>
+                            with
+                            vasoconstrictors to
+                            <span class="text-brand-orange font-bold not-italic">correcting the cause</span> by
+                            restoring
+                            flow mechanics."
+                        </p>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Future Directions Section -->
+        <section id="future"
+            class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div
+                class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-orange/5 via-black to-black -z-10">
+            </div>
+            <!-- Future Directions: Hopeful Horizon -->
+            <!-- Background Glow -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-orange/5 rounded-full blur-3xl animate-pulse-slow pointer-events-none">
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto w-full">
+                <div class="mb-20 text-center animate-on-scroll">
+                    <h2
+                        class="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-orange-100 to-brand-orange mb-6 font-display py-2">
+                        Future Directions</h2>
+                    Moving conscientiously from early signals to solid proof.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+
+                    <!-- 1. The Priority: Validation (Span 7) -->
+                    <div class="md:col-span-7 animate-on-scroll group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-brand-orange/30 hover:shadow-2xl hover:shadow-brand-orange/5"
+                        data-delay="0">
+                        <!-- Background Grid Texture -->
+                        <div
+                            class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20">
+                        </div>
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-brand-orange/10 blur-[100px] rounded-full group-hover:bg-brand-orange/20 transition-all duration-700">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col h-full justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-6">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange border border-brand-orange/20">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <span
+                                        class="px-3 py-1 rounded-full border border-brand-orange/20 text-brand-orange text-xs font-bold uppercase tracking-wider bg-brand-orange/5">Scientific
+                                        Priority</span>
+                                </div>
+
+                                <h3 class="text-3xl font-bold text-white mb-4">Definitive Validation</h3>
+                                <p class="text-zinc-400 leading-relaxed max-w-md">
+                                    Validating these promising signals with the rigor they deserve.
+                                </p>
+                            </div>
+
+                            <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div
+                                    class="bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl p-4 text-center group-hover:border-brand-orange/20 transition-colors">
+                                    <div class="text-brand-orange font-black text-xl mb-1">RCT</div>
+                                    <div class="text-zinc-500 text-[10px] uppercase font-bold tracking-wide">Design
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl p-4 text-center group-hover:border-brand-orange/20 transition-colors">
+                                    <div class="text-white font-black text-xl mb-1">Sham</div>
+                                    <div class="text-zinc-500 text-[10px] uppercase font-bold tracking-wide">Control
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl p-4 text-center group-hover:border-brand-orange/20 transition-colors">
+                                    <div class="text-white font-black text-xl mb-1">Large N</div>
+                                    <div class="text-zinc-500 text-[10px] uppercase font-bold tracking-wide">Cohort
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Standardization & Scalability (Span 5) -->
+                    <div class="md:col-span-5 animate-on-scroll group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col"
+                        data-delay="100">
+                        <!-- Background Dot Texture -->
+                        <div
+                            class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full group-hover:bg-blue-500/20 transition-all duration-700">
+                        </div>
+
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl font-bold text-white leading-tight">Standardization &<br>Scalability
+                                </h3>
+                            </div>
+
+                            <div class="space-y-4 flex-1">
+                                <!-- Pillar 1: Technique -->
+                                <div class="bg-black/20 rounded-xl p-3 border border-white/5">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <svg class="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                            </path>
+                                        </svg>
+                                        <span class="text-white font-bold text-sm">Reproducible Protocol</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400 leading-snug">Defined steps for consistent safety
+                                        and efficacy across operators.</p>
+                                </div>
+
+                                <!-- Pillar 2: IVUS -->
+                                <div class="bg-black/20 rounded-xl p-3 border border-white/5">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-white font-bold text-sm">Encourage IVUS</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400 leading-snug">Strongly recommended for precise
+                                        sizing and valve characterization.</p>
+                                </div>
+
+                                <!-- Pillar 3: Scale -->
+                                <div class="bg-black/20 rounded-xl p-3 border border-white/5">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <span class="text-white font-bold text-sm">Meeting Demand</span>
+                                    </div>
+                                    <p class="text-xs text-zinc-400 leading-snug">Addressing the <span
+                                            class="text-white">16-30%</span> of older adults suffering from OH.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Restoration (Full Span 12 - Horizontal Bar) -->
+                    <div class="md:col-span-12 animate-on-scroll group relative p-8 rounded-[2.5rem] bg-zinc-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-brand-green/30 hover:shadow-2xl hover:shadow-brand-green/5 flex flex-col md:flex-row items-center gap-8"
+                        data-delay="200">
+                        <div
+                            class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[size:100%_100%]">
+                        </div>
+                        <div
+                            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-1/2 bg-brand-green/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-50 transition-all duration-700">
+                        </div>
+
+                        <div
+                            class="relative z-10 w-16 h-16 shrink-0 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green border border-brand-green/20">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <div class="relative z-10 flex-1 text-center md:text-left">
+                            <div class="flex flex-col md:flex-row md:items-baseline md:gap-4 mb-2">
+                                <h3 class="text-2xl font-bold text-white">Long-term Restoration</h3>
+                                <span
+                                    class="text-brand-green text-sm font-bold uppercase tracking-widest hidden md:inline-block">The
+                                    Goal</span>
+                            </div>
+                            <p class="text-zinc-400 leading-relaxed">
+                                Aiming to provide a corrective solution for a condition that has long been managed,
+                                not treated.
+                            </p>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-medium group-hover:bg-brand-green group-hover:border-brand-green/50 group-hover:text-black transition-all duration-300">
+                                Physiologic Fix
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Case Video Section -->
+        <section id="video" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 bg-black">
+            <div class="mb-16 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4 font-display">Case Study</h2>
+            </div>
+            <div
+                class="w-full max-w-6xl mx-auto aspect-video bg-zinc-900 rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center relative group">
+                <!-- Fallback if video missing -->
+                <div class="text-zinc-600 text-xl font-medium">Video Asset (case_video.mp4) Not Found</div>
+
+                <video src="assets/case_video.mp4" controls class="absolute inset-0 w-full h-full object-cover">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-8 text-center text-zinc-600 text-sm">
+        &copy; 2026 Interventional Neuro Associates - STANDUP II Study
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

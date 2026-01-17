@@ -1,0 +1,49 @@
+/* Custom Scrollbar for Chrome/Safari/Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F05708;
+}
+
+/* Smooth Scrolling is handled by Tailwind 'scroll-smooth' on html, 
+   but specific section padding for fixed header offset can be handled nicely here if needed,
+   though 'pt-16' in HTML does most of the work. */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    /* Offset for sticky nav */
+}
+
+/* Utilities */
+.text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Hide scrollbar for clean horizontal scrolling if used */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Tabular Numbers for stable counter animations */
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+}

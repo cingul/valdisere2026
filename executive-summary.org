@@ -1,0 +1,73 @@
+#+TITLE: Executive Summary: Evaluation of Supracardiac Venous Angioplasty and Stenting on Orthostatic Intolerance and Orthostatic Hypotension - The STANDUP 3 Study
+#+AUTHOR: Karthikeyan M. Arcot, MD
+#+DATE: September 24, 2025
+#+OPTIONS: toc:nil num:nil ^:nil title:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,11pt]
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \definecolor{warmcoral}{RGB}{242, 101, 94}
+#+LATEX_HEADER: \definecolor{forestgreen}{RGB}{34, 139, 34}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{colortbl}
+#+LATEX_HEADER: \arrayrulecolor{forestgreen}
+#+LATEX_HEADER: \arrayrulewidth=0.5pt
+#+LATEX_HEADER: \usepackage{titlesec}
+#+LATEX_HEADER: \titleformat{\section}{\normalfont\large\bfseries\color{warmcoral}}{}{0em}{}
+#+LATEX_HEADER: \titleformat{\subsection}{\normalfont\normalsize\bfseries\color{warmcoral!70!black}}{}{0em}{}
+#+LATEX_HEADER: \usepackage{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks=true, linkcolor=warmcoral, urlcolor=warmcoral, citecolor=warmcoral}
+#+LATEX_HEADER: \usepackage[authoryear,round,sort]{natbib}
+#+LATEX_HEADER: \bibliographystyle{vancouver}
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \setmainfont{TeX Gyre Termes}
+# Removed: #+LATEX_HEADER: \AtBeginDocument{\RequirePackage{etoolbox}\let\documentclass@orig\documentclass\renewcommand\documentclass[2][]{\documentclass@orig[#1]{article}}}
+# Bibliography setup
+#+bibliography: /Users/arcot/research/bib/Cingulum.bib
+#+cite_export: csl /Users/arcot/research/styles/vancouver-brackets.csl
+
+* Evaluation of Supracardiac Venous Angioplasty and Stenting on Orthostatic Intolerance and Orthostatic Hypotension - The STANDUP 3 Study
+
+--------------
+** Background and Significance
+Orthostatic hypotension (OH), defined as a systolic blood pressure drop of \geq 20 mmHg or diastolic of \geq 10 mmHg within 3 minutes of standing [cite:@kulkarniTreatingLowsManagement2024], affects 16--30% of adults aged 65+ (~8.3--15.6 million Medicare beneficiaries in 2023)[cite:@rutanOrthostaticHypotensionOlder1992]. OH, a form of orthostatic intolerance (OI), causes dizziness, syncope, and fatigue, increasing risks of mortality, heart disease, stroke[cite:@ricciCardiovascularMorbidityMortality2015a], atrial fibrillation[cite:@koRelationOrthostaticHypotension2018], venous thromboembolism[cite:@bellOrthostaticHypotensionRisk2016], and kidney disease[cite:@franceschiniOrthostaticHypotensionAssociated2010]. Current treatments (midodrine, fludrocortisone, droxidopa) are limited by side effects like hypertension[cite:@sraEfficacyMidodrineHydrochloride1997], urological issues[cite:@vaidyanathanMidodrineInsidiousDevelopment2007], hypokalemia[cite:@burnsExtremeMetabolicAlkalosis1983], and heart failure[cite:@willisFludrocortisoneInducedHeart1994].
+
+Cerebral vessels integrate fluid drainage [cite:@agarwalCerebralVesselsOverview2021], with jugular venous valves regulating return [cite:@anderhuberVenousValvesLarge1984]. Jugular outflow disturbance contributes to OH [cite:@zhouUnderstandingJugularVenous2018]. Venous sinus stenosis insights highlight venous roles in neurology [cite:@zhaoAdvancesUnderstandingComplex2022].
+
+2023 Medicare Part D PUF data show OH drug spending of $86,789,822.21 for ~126,593 patients: Midodrine HCl: 866,382 prescriptions, 106,462 patients, $69,853,535.66, Fludrocortisone Acetate: 232,372 prescriptions, 9,115 patients, $5,824,754.89, Droxidopa (Northera): 724 prescriptions, 16 patients, $11,111,531.66 (incomplete data).
+
+The STANDUP 2 Study hypothesizes that supracardiac venous impairment exacerbates OH/OI by disrupting baroreflex, venous return, and glymphatic clearance[cite:@shapiroAdolfFickforgottenGenius1972; @normahaniRepurposingSystemicVenous2020; @ketchFourFacesBaroreflex2002]. The intervention aims to improve regulation and reduce costs.
+
+** Specific Aims
+1. Assess efficacy in reducing ME and blood pressure drop.
+2. Evaluate OHQ score improvements.
+
+** Methods
+Single-arm registry trial recruiting 200 patients (age \geq 18) with OH/OI at St. Francis Hospital, Roslyn, NY.
+
+- Intervention: Venous angioplasty/stenting with RHC; de-escalate medications (droxidopa \rightarrow pyridostigmine \rightarrow fludrocortisone \rightarrow midodrine).
+- Endpoints: Primary (ME/blood pressure); secondary (OHQ).
+- Safety: Post-procedure monitoring; DSMB review.
+- Analysis: Paired t-tests/ANOVA; power 97.8% (n=200, p<0.05).
+
+** Potential Benefits and Cost Savings
+Intervention may reduce symptoms and medication use. Potential savings: ~$38,950,298.45/year (50% generics, 10% droxidopa reduction). OH-related costs ~$1.0--$2.1B (0.1--0.2% of $1,029.8B Medicare spending).
+
+** Limitations
+Suppression underestimates patients (96.7% midodrine, 98.9% fludrocortisone, 4.8% droxidopa rows). Droxidopa data incomplete (975 rows). Costs Part D only. Savings hypothetical. Single-center.
+
+** Scientific and Public Health Impact
+Targets venous outflow for OH/OI, potentially reducing $86.8M Part D burden and $1.0--$2.1B total costs for ~12 million beneficiaries.
+
+
+** 2023 OH Drug Costs Table
+| Drug Name                  | Prescriptions | Patients | Cost ($)       |
+|----------------------------|---------------|----------|----------------|
+| Midodrine HCl              | 866,382      | 106,462 | 69,853,535.66  |
+| Fludrocortisone Acetate    | 232,372      | 9,115   | 5,824,754.89   |
+| Droxidopa (Northera)       | 724          | 16      | 11,111,531.66  |
+| Total                      | 1,099,478    | 124,593 | 86,789,822.21  |
+
+** References
+#+print_bibliography:

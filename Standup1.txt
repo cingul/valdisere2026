@@ -1,0 +1,237 @@
+Title: Evaluation of Supracardiac Venous Angioplasty and Stenting on Orthostatic Intolerance and Orthostatic Hypotension - The STANDUP study
+Principal Investigator: Karthikeyan M. Arcot, MD
+Co Investigators: Vincent S. DeOrchis, MD, Jeremy M. Liff. MD
+Date: December 29, 2024
+Background:
+Nearly a century ago, Bradbury and Eggleston provided the first documented description of postural
+orthostatic hypotension [1]. It is now widely recognized and is thought to affect approximately 16% to
+30% of adults aged 65 years or older [2]. Orthostatic Hypotension is associated with a significantly
+increased risk of all-cause mortality, incident coronary heart disease, heart failure and stroke [3]. It is
+also associated with an increased risk of atrial fibrillation [4], venous thromboembolism [5] and chronic
+kidney disease [6]. Current pharmacological treatments are suboptimal in terms of symptom relief
+and often limited by serious side effects [7] including severe supine hypertension and its deleterious
+effects. Systemic Arterial pressure is maintained via a complex orchestration of physical, chemical
+and biological processes [8]. We propose that supracardiac venous outflow impairment disrupts this
+regulation and contributes to orthostatic hypotension. The scientific rationale for this involves several
+interconnected mechanisms.
+a) Venous return is a critical determinant of cardiac output. There is a profound effect of gravity in
+the upright position with pooling of more than 500 ml of blood in the venous capacitance vessels and
+splanchnic circulation leading to a decrease in venous return and a drop in cardiac output of nearly
+20% [7]. This produces a remarkable decrease in mean arterial pressure at the level of the head [9].
+Additionally, cerebral autoregulation is less able to maintain stable perfusion during sudden hypotension
+as compared to sudden hypertension [10]. Under normal circumstances this is quickly counteracted by
+multiple mechanisms leading to a smooth asymptomatic postural transition. Given that venous return is
+a difference between mean systemic venous pressure and the resistance to venous return [VR = Pmsv
+- Rv ] [11], venous valvular stenoses will impede venous return in proportion the number of stenosed
+valves and to the degree to which they are stenosed.
+b) The body’s primary defense against OH is the baroreflex mechanism. Ketch et al. provide a
+detailed description of this process, where baroreceptors in the carotid sinus and aortic arch detect
+changes in blood pressure. This information is transmitted to the brain stem via the glossopharyngeal
+and vagus nerves. The nucleus tractus solitarii in the dorsal medulla processes this input, and the caudal and rostral ventrolateral medulla modulate sympathetic outflow in response. This complex system
+aims to maintain blood pressure by adjusting heart rate and vascular tone [12]. The efficiency of this
+regulatory mechanism depends on proper metabolite clearance, which is governed by the Fick principle
+[13]. This principle states that the rate of metabolite removal from an organ is proportional to the difference in metabolite concentration between arterial and venous blood and the blood flow to the organ. In
+the context of OH, any impairment in venous outflow can disrupt this process, potentially exacerbating
+the condition. We thus concluded that improving venous outflow via venous angioplasty or stenting
+of the large supracradiac veins may ameliorate orthostatic hypotension and orthostatic intolerance at
+least to a degree that is tolerable by patients.
+
+1
+
+Methods:
+Intervention:
+• Access
+The procedure begins with vascular access, which is achieved by prepping the access site using
+standard sterile precautions to minimize the risk of infection. Common venous access sites include the common femoral veins, basilic veins, and the internal or external jugular veins, depending on the location of the venous obstruction and patient anatomy. Using the sterile Seldinger
+technique, a micropuncture kit is employed to puncture the vein and obtain access. Once access
+is confirmed, a sheath is placed to facilitate the introduction of catheters and other devices. The
+size of the sheath depends on procedural needs and typically ranges from 5F to 9F, with an 8F
+sheath being most commonly used in the right common femoral vein. In cases where arterial
+access is required, either the femoral artery (preferred site: right common femoral artery) or the
+radial artery can be used. Similar sterile techniques are applied, and a 5F or 6F sheath is inserted to allow for arterial catheterization. This arterial access may be necessary for adjunctive
+imaging or interventions during complex venous procedures.
+• Arteriography:
+– Right common carotid artery (cervical views)
+– Right internal carotid artery (cranial views)
+– Right subclavian artery(thoracic views)
+– Right vertebral artery (cranial views)
+– Left common carotid artery (cervical views)
+– Left internal carotid artery (cranial views)
+– Left subclavian artery(thoracic views)
+– Left vertebral artery (cranial views)
+• Venography
+– Right internal jugular vein (cervical and cranial views)
+– Left internal jugular vein (cervical and cranial views)
+– Right subclavian vein (thoracic views)
+– Left subclavian vein (thoracic views)
+• Intravascular Ultrasound (IVUS) An IVUS catheter is advanced over a microwire into the below
+venous structures for detailed imaging:
+– Superior Sagittal Sinus
+– Torcula
+– Right Transverse Sinus
+– Right Sigmoid Sinus
+– Right Internal jugular vein
+– Right Brachiocephalic Vein
+2
+
+– Left Transverse Sinus
+– Left Sigmoid Sinus
+– Left Internal jugular vein
+– Left Brachiocephalic Vein
+• Venous Angioplasty
+– Intracranial Portion: Angioplasty is performed based on vessel size as determined by
+IVUS or angiography Commonly Used Balloons
+* Trek 4.0 mm x 20 mm
+* Viatrac 5 mm / 6 mm / 7 mm x 20 mm
+– Extracranial Portion Angioplasty is performed based on vessel size as determined by angiography Commonly used balloons
+* Armada 10 mm / 12 mm / 14 mm x 20 mm / 40 mm
+* Inflation is typically to 10 atmospheres for 10 seconds
+• Venous Stenting Stent sizing is determined by angiography Stents:
+– Abre stent 14 mm / 16 mm / 18 mm x 60 cm / 80 cm / 100 cm /120 cm
+– Post-Stenting Angioplasty Preferred balloons Armada 12 mm / 14 mm x 20 mm / 40 mm
+– Follow-Up Imaging Venogram IVUS
+• Hemostasis and Closure
+– For venous access: Manual compression or a closure device can be used.
+– For arterial access: Manual compression or a closure device can be used.
+Safety Monitoring:
+• Post procedure monitoring:
+– Vitals at regular intervals until discharge
+– Access site monitoring at regular interval until discharge
+– Neurological checks every 15 minutes x 2 times and every 30 minutes x 1 time for a total of
+1 hour of monitoring
+– Follow up in the office
+* 2 weeks to 4 weeks
+* 3 months
+* 6 months
+* 1 year
+* 2 years
+
+3
+
+• Reporting: The management of adverse events (AEs) and serious adverse events (SAEs) during
+and after interventional procedures involves a structured, proactive approach to ensure patient
+safety and mitigate risks. Once an AE is identified, the immediate priority is to stabilize the patient
+and address the complication based on its severity. For minor events, supportive measures such
+as observation or symptomatic treatment may suffice, while major complications may require
+urgent therapeutic interventions, such as additional procedures, escalation of care, or surgical
+consultation. A robust escalation protocol is critical, ensuring that all team members are trained
+to recognize complications early and initiate appropriate responses. For example, in cases of
+bleeding or vascular injury, measures such as hemostatic agents, transfusions, or endovascular
+repair can be employed promptly. Post-procedurally, patients are closely monitored for early
+signs of complications. This includes regular clinical assessments, imaging when necessary, and
+laboratory evaluations (e.g., coagulation profiles). Clear discharge instructions are provided for
+outpatient cases, detailing symptoms that may indicate complications (e.g., swelling, pain, fever)
+and emergency contact information for the care team.
+Serious AEs are documented and reported according to institutional protocols. Root cause analysis is conducted for SAEs to identify contributing factors—whether technical, procedural, or
+systemic—and develop strategies to prevent recurrence. Regular presentations at the neurovascular performance improvement meetings will facilitate shared learning among practitioners by
+reviewing adverse outcomes in a non-punitive environment. Recommendations from these reviews may lead to updates in procedural protocols, enhanced training programs, and improved
+patient pathways to strengthen overall safety of the procedure.
+Funding:
+None.
+Scientific Benefit:
+This study will provide valuable insights into the potential benefits of supracardiac venous angioplasty
+and stenting for patients with orthostatic intolerance and hypotension. The results may lead to new
+treatment options for these challenging conditions and improve our understanding of their underlying
+mechanisms, particularly the role of venous outflow obstruction disorders (VOODO) in neurological
+health.
+Subject Recruitment and Selection:
+Patients with diagnosed orthostatic intolerance or orthostatic hypotension who have evidence of jugular
+vein or brachiocephalic vein stenosis on imaging studies will be recruited from neurology, primary care
+and cardiology offices. We aim to enroll 100 participants over a 24-month period.
+Location:
+The study will be conducted at St. Francis Hospital and Heart Center, 100 Port Washington Blvd,
+Roslyn, NY 11576.
+
+4
+
+Research Design:
+• Prospective: This is a prospective, single-arm, unblinded registry trial to evaluate the effects of
+supracardiac venous angioplasty and stenting on orthostatic intolerance and orthostatic hypotension.
+• Inclusion criteria for Prospective Cohort:
+1. Age 18 years
+2. Diagnosed orthostatic intolerance or orthostatic hypotension not responding to standard
+medical management or complicated by supine hypertension
+3. Able to provide informed consent
+• Exclusion criteria for Prospective Cohort:
+1. Pregnancy or breastfeeding
+2. Active infection
+3. Coagulopathy or contraindication to anticoagulation therapy
+• Statistical Analysis: We will use paired t-tests to compare pre- and post-intervention measures
+of orthostatic intolerance and hypotension. Quality of life scores will be analyzed using repeated
+measures ANOVA. A p-value < 0.05 will be considered statistically significant. Sample size calculation indicates that 100 participants will provide 80% power to detect a clinically meaningful
+difference in orthostatic symptoms.
+Potential Risks:
+1. Procedural risks: bleeding, infection, vessel injury, thrombosis, stroke, intra and extracranial hemorrhage, mortality
+2. Radiation exposure from fluoroscopy
+3. Contrast-induced nephropathy
+4. Stent-related complications: migration, perforation, restenosis, pain, fracture of a stent, erosion
+into surrounding structures
+5. Potential worsening of symptoms
+Protection of Subjects:
+All patient data will be de-identified and stored on secure, password-protected servers. Only authorized
+study personnel will have access to the data. Participants will be closely monitored for adverse events
+throughout the study period.
+
+5
+
+Potential Benefits:
+1. Improvement in orthostatic intolerance and hypotension symptoms
+2. Enhanced quality of life
+3. Reduced medication dependence
+4. Contribution to scientific knowledge
+The Risk/Benefit Ratio:
+While there are potential risks associated with the procedure, the potential benefits of improved symptoms and quality of life outweigh these risks for patients. The study will provide valuable information on
+a novel treatment approach for a challenging clinical problem.
+
+Bibliography
+1. Bradbury S, Eggleston C. Postural hypotension: A report of three cases. American heart journal
+[Internet]. 1925 Oct 1 [cited 2024 Dec 26];1(1):73–86. Available from: https://www.sciencedirect.
+
+com/science/article/pii/S0002870325900075
+2. Rutan GH, Hermanson B, Bild DE, Kittner SJ, LaBaw F, Tell GS. Orthostatic hypotension in older
+adults. The Cardiovascular Health Study. CHS Collaborative Research Group. Hypertension. 1992
+Jun;19:508–19.
+3. Ricci F, Fedorowski A, Radico F, Romanello M, Tatasciore A, Di Nicola M, et al. Cardiovascular
+morbidity and mortality related to orthostatic hypotension: A meta-analysis of prospective observational
+studies. Eur heart j. 2015 Jul 1;36(25):1609–17.
+4. Ko D, Preis SR, Lubitz SA, McManus DD, Vasan RS, Hamburg NM, et al. Relation of Orthostatic
+Hypotension With New-Onset Atrial Fibrillation (From the Framingham Heart Study). The american
+journal of cardiology [Internet]. 2018 Mar 1 [cited 2023 Jul 18];121(5):596–601. Available from: https:
+
+//www.sciencedirect.com/science/article/pii/S0002914917318611
+5. Bell EJ, Agarwal SK, Cushman M, Heckbert SR, Lutsey PL, Folsom AR. Orthostatic Hypotension
+and Risk of Venous Thromboembolism in 2 Cohort Studies. Am j hypertens [Internet]. 2016 May
+[cited 2023 Jul 11];29(5):634–40. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/
+
+PMC5014082/
+6. Franceschini N, Rose K, Astor BC, Couper D, Vupputuri S. Orthostatic hypotension is associated
+with incident chronic kidney disease: The Atherosclerosis Risk In Communities Study. Hypertension
+[Internet]. 2010 Dec [cited 2023 Jul 26];56(6):1054–9. Available from: https://www.ncbi.nlm.nih.
+
+gov/pmc/articles/PMC3147024/
+7. Kulkarni S, Jenkins D, Dhar A, Mir F. Treating Lows: Management of Orthostatic Hypotension. J
+cardiovasc pharmacol [Internet]. 2024 Sep 3 [cited 2025 Jan 1];84(3):303–15. Available from: https:
+
+//www.ncbi.nlm.nih.gov/pmc/articles/PMC11368167/
+8. Levick JR. An introduction to cardiovascular physiology. London ; Butterworths; 1991.
+9. Magder S. The meaning of blood pressure. Crit care [Internet]. 2018 Oct 11 [cited 2025 Jan
+1];22:257. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6180453/
+10. Wang Y, Payne SJ. Static autoregulation in humans. J cereb blood flow metab [Internet].
+2024 Nov [cited 2025 Jan 1];44(11):1191–207. Available from: https://www.ncbi.nlm.nih.gov/
+
+pmc/articles/PMC11542139/
+6
+
+11. Normahani P, Shalhoub J, Narayanan S. Repurposing the systemic venous return model for
+conceptualisation of chronic venous insufficiency and its management. Phlebology [Internet]. 2020 Dec
+[cited 2025 Jan 1];35(10):749–51. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/
+
+PMC7675772/
+12. Ketch T, Biaggioni I, Robertson R, Robertson D. Four faces of baroreflex failure: Hypertensive
+crisis, volatile hypertension, orthostatic tachycardia, and malignant vagotonia. Circulation. 2002 May
+28;105(21):2518–23.
+13. Shapiro E. Adolf Fick–forgotten genius of cardiology. Am j cardiol. 1972 Nov 8;30(6):662–5.
+
+7
+
+

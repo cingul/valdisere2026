@@ -1,0 +1,650 @@
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+Evaluation of Supracardiac Venous Angioplasty and Stenting on Orthostatic
+Intolerance and Orthostatic Hypotension - The STANDUP 2 Study
+Principal Investigator: Karthikeyan M. Arcot, MD
+Date: August 15, 2025
+
+Background
+Nearly a century ago, Bradbury and Eggleston provided the first documented description of
+postural orthostatic hypotension [1]. It is now widely recognized and is thought to affect
+approximately 16% to 30% of adults aged 65 years or older [2]. Orthostatic hypotension (OH),
+defined as a reduction of systolic blood pressure of at least 20 mmHg or diastolic blood pressure
+of at least 10 mmHg within 3 minutes of standing [3], is a form of orthostatic intolerance
+(OI), which is characterized by the inability to tolerate the upright posture due to symptoms
+such as dizziness or syncope that are relieved by recumbency [3]. OH is associated with a
+significantly increased risk of all-cause mortality, incident coronary heart disease, heart failure,
+and stroke [4]. It is also associated with an increased risk of atrial fibrillation [5], venous
+thromboembolism [6], and chronic kidney disease [7]. Current pharmacological treatments
+such as midodrine, fludrocortisone, droxidopa, and pyridostigmine are suboptimal in terms of
+symptom relief and often limited by serious side effects [3], including severe supine hypertension
+[8], adverse urological effects [9], hypokalemia, metabolic alkalosis [10], congestive heart failure
+[11], headaches, nausea, palpitations [12], fatigue, and muscle weakness [13].
+Systemic arterial pressure is maintained via a complex orchestration of physical, chemical, and
+biological processes [14]. We propose that supracardiac venous outflow impairment disrupts
+this regulation and contributes to orthostatic hypotension and orthostatic intolerance (OI). The
+scientific rationale for this involves several interconnected mechanisms:
+• Baroreflex and Metabolite Clearance: The body’s primary defense against OH is the
+baroreflex mechanism. Baroreceptors in the carotid sinus and aortic arch detect blood pressure
+changes, transmitting information to the brainstem via the glossopharyngeal and vagus nerves.
+The nucleus tractus solitarii process this input, and the caudal and rostral ventrolateral medulla
+modulate sympathetic outflow to adjust heart rate and vascular tone [15]. Efficiency depends
+on proper metabolite clearance, governed by the Fick principle [16], where metabolite removal
+rate is proportional to the arterial-venous concentration difference and organ blood flow.
+Impairment in venous outflow can disrupt this tightly coordinated mechanism, exacerbating
+OH.
+• Venous Return and Cardiac Output Dynamics: Venous return is a critical determinant of
+cardiac output. Gravity in the upright position causes pooling of more than 500 ml of blood
+in the venous capacitance vessels and splanchnic circulation, leading to a decrease in venous
+return and a drop in cardiac output of nearly 20% [3]. This produces a remarkable decrease
+in mean arterial pressure at the level of the head [17]. Cerebral autoregulation is less able
+to maintain stable perfusion during sudden hypotension compared to sudden hypertension
+[18]. Under normal circumstances, this is counteracted by multiple mechanisms for a smooth,
+asymptomatic postural transition. Venous return is defined as the difference between mean
+systemic venous pressure and resistance to venous return [VR = Pmsv - Rv] [19]. Venous
+valvular stenoses impede venous return proportionally to the number and degree of stenosed
+1
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+valves, consequently decreasing cardiac output.
+• Vestibulo-Sympathetic Reflex and Sympathetic Anticipation Failure: The vestibulosympathetic reflex integrates vestibular inputs from the inner ear with sympathetic nervous
+system activity to anticipate and counteract postural changes, such as standing [20]. In
+OH patients with supracardiac venous outflow obstruction, venous congestion leads to poor
+metabolite clearance in key sympathetic pathways, including the rostral ventrolateral medulla
+and sympathetic preganglionic neurons [15]. This impairs anticipatory sympathetic activation
+prior to standing, resulting in delayed or insufficient vasoconstriction and heart rate adjustments.
+Consequently, patients experience exaggerated drops in blood pressure upon postural change.
+• Static Venous Tone: We suspect that venous tone in OH patients is somewhat static, failing
+to dynamically adjust to postural demands. This manifests as excessive venous constriction
+in the supine position (contributing to supine hypertension) and inadequate constriction
+while standing (exacerbating hypotension) [21]. Venous outflow obstruction may perpetuate
+this dysregulation by maintaining chronic congestion, preventing adaptive venoconstriction.
+Improving venous outflow via angioplasty or stenting could restore dynamic venous tone,
+alleviating both supine hypertension and standing hypotension [19].
+• Glymphatic Clearance, Venous Engorgement, and the Fick Principle: A key underpinning
+mechanism contributing to the pathophysiology of orthostatic hypotension in the context
+of venous outflow obstruction is the disruption of the glymphatic system, a brain-wide
+perivascular network that clears metabolic waste. The glymphatic system, which is most
+active during sleep, relies on the active bulk flow of cerebrospinal fluid (CSF) into the brain
+along periarterial spaces, followed by the outflow of interstitial fluid and metabolic waste
+products along perivenous spaces. Glymphatic clearance is crucial for removing neurotoxic
+proteins and metabolites, including those that influence autonomic function. Cerebral venous
+outflow obstruction leads to increased intracranial pressure and venous congestion, which
+directly impacts the perivenous outflow component of the glymphatic system [19]. This venous
+engorgement can constrict the perivenous spaces, impeding the drainage of interstitial fluid.
+According to the Fick principle, the rate of metabolite removal is directly proportional to
+the blood flow [16]. When venous outflow is compromised, blood flow through the brain’s
+microcirculation is slowed, reducing the efficiency of metabolite clearance from critical
+brainstem centers like the rostral ventrolateral medulla, which regulates sympathetic outflow
+[15]. This accumulation of metabolites can impair neuronal function, leading to a blunted or
+delayed sympathetic response to postural changes, a phenomenon we refer to as “sympathetic
+anticipation failure”. Therefore, supracardiac venous angioplasty or stenting, by improving
+venous outflow, may restore proper glymphatic clearance and metabolite exchange [19], thereby
+re-sensitizing autonomic centers and improving orthostatic tolerance.
+We conclude that improving venous outflow through supracardiac venous angioplasty or stenting
+may ameliorate OH and OI, at least to a tolerable degree.
+
+Methods
+Intervention
+The procedure follows standard sterile techniques and includes the following steps, with RHC
+integration:
+• Access: Vascular access is achieved using sterile Seldinger technique. Common sites include
+2
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+common femoral veins, basilic veins, or internal/external jugular veins. Sheath sizes range
+from 5F to 9F. Arterial access for diagnostic angiography may be used if needed.
+• Arteriography: Performed on bilateral common carotid, internal carotid, subclavian, and
+vertebral arteries with specified views (cervical, cranial, thoracic). Features such as stenosis,
+occlusion, collateral circulation are assessed, stagnation, reflux and venous phase anomalies
+are captured
+• Venography: Performed on bilateral internal jugular and subclavian veins with cervical,
+cranial, and thoracic views. (Includes detailed assessment of catheter position, reflux, time to
+contrast clearance, structural anomalies [e.g., thrombosis, aneurysm, diverticulum, atresia],
+collaterals [mild/moderate/severe], venous structural anomalies, flow direction in the superior
+ophthalmic vein [antegrade/retrograde], and visualization of the middle meningeal vein
+[yes/no]. Occipital sinus presence [yes/no] is also noted.)
+• Intravascular Ultrasound (IVUS): Advanced into key venous structures (superior sagittal
+sinus, torcula, bilateral transverse/sigmoid sinuses, internal jugular veins, brachiocephalic
+veins). (Each vein is segmented into three parts for structural data capture, including smoke,
+organized thrombus, extrinsic compression, and vascular compression.)
+• Right Heart Catheterization (RHC): Integrated into the procedure to evaluate hemodynamic
+changes pre- and post-stenting. A Swan-Ganz catheter is advanced via venous access to
+measure:
+– Right atrial (RA) pressure
+– Right ventricular (RV) pressure (systolic/diastolic)
+– Pulmonary artery (PA) pressure (systolic/diastolic/mean)
+– Pulmonary capillary wedge pressure (PCWP)
+– Oxygen saturation (%)
+– Cardiac output (L/min) via thermodilution or Fick method
+– Cardiac index (L/min/m²)
+– Internal jugular vein (IJV) temperature (°C)
+– Central Vein temperature (°C)
+Measurements are taken before and immediately after stenting to assess improvements
+in cardiac output and repeated at 6 months to determine long term improvement. Waveforms and pressures are recorded for physiological analysis, including respiratory variation
+(poor/some/moderate/excellent) at relevant catheter stations.
+• Venous Angioplasty: Performed based on IVUS/angiography. Balloons: Recommended 4-9
+mm for intracranial stenoses; 10-14 mm for extracranial stenoses. Inflation: Recommended
+nominal for 10 seconds.
+• Venous Stenting: Stents (Abre Stents are the only recommended ones). Sizing via angiography
+and IVUS. Post-stenting angioplasty with balloons (recommended armada or dorado). Followup imaging: Venogram and IVUS.
+• Hemostasis and Closure: Manual compression or closure devices for access sites.
+
+3
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+Medication De-Escalation Protocol
+Following intervention, this is the preferred sequence of medication discontinuation: droxidopa
+(Northera) → pyridostigmine (Mestinon) → fludrocortisone (Florinef) → midodrine. On each
+day, if the patient is taking the next drug in sequence, stop it completely; if not, proceed to the
+next drug on the list. Continue orthostatic vitals (supine, seated, standing) and symptom checks
+(dizziness, presyncope, fatigue). If patient cannot tolerate the medication discontinuation, we
+will transition to a slower outpatient taper as clinically indicated.
+Midodrine Equivalents (ME) Overview
+Midodrine Equivalents (ME) provide a standardized way to compare the burden of different
+blood pressure–raising medications. Each drug’s usual maximum daily dose is defined as 100
+ME, and lower doses are expressed as proportional values (e.g., midodrine 15 mg/day ≈ 50 ME
+since 30 mg/day = 100 ME). A patient’s total ME is the sum of all agents taken.
+ME expresses daily OH medication burden on a common 0–100 scale per agent (100 ME = the
+drug’s usual maximum daily dose). Totals are the sum across agents. The table below lists the
+conversion factor and the midodrine equivalents for common daily doses.
+Medication
+Midodrine
+
+Max Daily
+Dose
+30 mg/day
+
+Conversion Common Daily Doses → ME (≈)
+(ME per mg)
+3.3333 5→17 • 10→33 • 15→50 • 20→67 •
+30→100
+
+Fludrocortisone 0.3 mg/day
+
+333.3333 0.1→33 • 0.15→50 • 0.2→67 • 0.25→83
+• 0.3→100
+
+Droxidopa
+
+1800 mg/day
+
+0.055556 300→17 • 600→33 • 900→50 • 1200→67
+• 1800→100
+
+Pyridostigmine
+
+180 mg/day
+
+0.55556 60→33 • 90→50 • 120→67 • 150→83 •
+• 180→100
+
+Note: ME assumes proportional dose–effect within usual ranges; clinical response varies. Clinical
+judgment should be used for tapering and re-initiation.
+This protocol aims to minimize side effects while leveraging improved venous outflow.
+Endpoints
+Primary
+1. Reduction in total prescribed midodrine-equivalence post-intervention.
+2. Improvement in orthostatic blood pressure drop (supine to standing) post-intervention.
+Secondary
+1. Improvement in OHQ score post-intervention.
+
+4
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+Safety Monitoring
+Post-Procedure: Vitals q15min x2, then q30min x1 (total 1 hour). Access site and neurological
+checks. Follow-ups: Recommended 2-4 weeks, ~3 months, ~6 months, ~1 year and ~2 years.
+• Reporting Adverse Events (AEs): The management of adverse events (AEs) and serious adverse
+events (SAEs) during and after interventional procedures involves a structured, proactive
+approach to ensure patient safety and mitigate risks. Once an AE is identified, the immediate
+priority is to stabilize the patient and address the complication based on its severity. For
+minor events, supportive measures such as observation or symptomatic treatment may suffice,
+while major complications may require urgent therapeutic interventions, such as additional
+procedures, escalation of care, or surgical consultation. The current escalation protocols are
+dictated by the cath lab and are critical and ensure that all team members are trained to recognize
+complications early and initiate appropriate responses. For example, in cases of bleeding
+or vascular injury, measures such as hemostatic agents, transfusions, or endovascular repair
+can be employed promptly. Post-procedurally, patients are closely monitored for early signs
+of complications. This includes regular clinical assessments, imaging when necessary, and
+laboratory evaluations (e.g., coagulation profiles). Clear discharge instructions are provided
+for outpatient cases, detailing symptoms that may indicate complications (e.g., swelling, pain,
+fever) and emergency contact information for the care team. Serious AEs are documented
+and reported according to institutional protocols. Root cause analysis is conducted for SAEs
+to identify contributing factors—whether technical, procedural, or systemic—and develop
+strategies to prevent recurrence. Recommendations from these reviews may lead to updates
+in procedural protocols, enhanced training programs, and improved patient pathways to
+strengthen overall safety of the procedure.
+
+Funding
+• Research Assistant - Provided by Interventional Neuro Associates
+• Mentoring - Provided by St. Francis Research Center
+• Principal and co investigators will volunteer their time
+
+Scientific Benefit
+This study will provide insights into venous outflow’s role in OH/OI, including vestibulosympathetic mechanisms and venous tone. It evaluates RHC-guided interventions and medication
+de-escalation, potentially reducing pharmacological dependence and advancing VOODO (Venous
+Outflow Obstruction Disorders) understanding.
+
+Subject Recruitment and Selection
+Patients with OH/OI, recruited from neurology, primary care, cardiology. Aim: 200 participants
+over a 24-month period.
+
+Location
+St. Francis Hospital and Heart Center, 100 Port Washington Blvd, Roslyn, NY 11576.
+5
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+Research Design
+Prospective: Single-arm, unblinded registry trial.
+• Inclusion Criteria:
+1. Age ≥18 years
+2. Diagnosed OH as defined above, or OI defined by a score greater than 3 on the orthostatic
+hypotension questionnaire (OHQ)
+3. Patient/surrogate/healthcare proxy able to provide informed consent
+• Exclusion Criteria:
+– Pregnancy/breastfeeding
+– Active infection
+– Coagulopathy
+• Statistical Analysis: Paired t-tests for pre/post measures; repeated measures ANOVA for QoL.
+Sample size: 200 for 97.8% power (p<0.05).
+• Potential Risks:
+– Intracranial Hemorrhage (Bleeding in the Brain):
+∗ What It Is: This is when blood leaks inside your skull, maybe because a tiny blood vessel
+gets nicked while we’re guiding the catheter or because of medicines we use to keep your
+blood from clotting too much. It is a rare complication of venous intervention.
+∗ How It Might Feel: You could suddenly get a very bad headache, feel confused, have
+trouble speaking, notice weakness or numbness on one side of your body, see seizures
+(shaking you can’t control), or even pass out.
+∗ How Serious: This is very serious; it could harm your brain permanently or, in the worst
+case, be life-threatening if we don’t stop it fast.
+∗ How Long: It could start right away during or after the procedure. If it’s not treated
+quickly, the effects might last a long time or not go away at all.
+∗ What We Will Do: If we suspect bleeding in the brain, we will do a brain scan (like a CT)
+right away to find it, and we might need to do emergency surgery or give you medicines
+to stop the bleeding. We have brain surgeons ready to help, and we will tell you and your
+family immediately if this happens so you know what’s going on and what we are doing
+to fix it.
+– Intraspinal Hemorrhage (Bleeding in the Spinal Canal):
+∗ What It Is: This is when blood collects around your spinal cord, possibly from a poke during the procedure or from pressure changes in your veins affecting your spine. Incidence
+is rare in catheter-based procedures.
+∗ How It Might Feel: You might feel sharp or intense back pain, numbness or tingling in
+your legs or arms, weakness that makes it hard to move, or trouble walking. In rare cases,
+it could make you unable to move parts of your body.
+∗ How Serious: This can range from uncomfortable to very serious, depending on how
+much blood there is and where it presses on your spine.
+6
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+∗ How Long: It could start soon after the procedure and might last days, weeks, or longer
+if it’s bad and not treated.
+∗ What We Will Do: We’ll pick entry points far from your spine to avoid this, check how
+you’re moving and feeling every hour for the first hour after, and use a scan if you have
+symptoms. If we find bleeding, we might give you medicines to reduce swelling or do
+surgery to remove the blood. We will call in a spine expert, and we will let you know
+right away if we think this is happening, explaining every step we take to help you.
+– Stroke:
+∗ What It Is: A stroke happens if a blood clot or piece of debris blocks an artery in your
+brain during the procedure, stopping oxygen from reaching part of your brain tissue. This
+could come from the catheter or stent, with a risk of 1-3% in venous stenting.
+∗ How It Might Feel: You might suddenly feel weak or numb in your face, arm, or leg
+(usually on one side), have trouble talking or understanding others, lose vision in one or
+both eyes, or feel dizzy and unsteady.
+∗ How Serious: It could be noticeable but temporary, or it could cause lasting problems
+like trouble moving or thinking clearly, depending on how big an area of your brain is
+affected.
+∗ How Long: It might start during or right after the procedure. Some effects could go away
+in hours, but others might stay for a long time or not go away.
+∗ What We Will Do: We will give you medicine during the procedure to thin your blood
+and prevent clots, use X-rays to watch your brain’s blood flow, and act fast if a clot forms,
+either with drugs to dissolve it or a tool to pull it out. We will check your vitals every 15
+minutes after to catch this early, and if it happens, we will tell you and your family right
+away, starting treatment and keeping you updated.
+– Venous Infarction (Brain Tissue Damage from Blocked Veins):
+∗ What It Is: This is when a vein gets blocked, maybe by a clot in the stent, so blood
+can’t drain out of part of your brain properly, causing swelling or damage there. Risk is
+estimated at 1-2% post-stenting.
+∗ How It Might Feel: You could get a headache, feel confused, have blurry or double vision,
+or notice weakness in your body, kind of like a stroke but from a vein problem.
+∗ How Serious: It could make you uncomfortable or, if it gets worse, cause serious brain
+swelling or bleeding that needs urgent care.
+∗ How Long: It might show up hours or days after the procedure and could be short-lived
+or last a long time if not fixed.
+∗ What We Will Do: After the procedure, we will take pictures (with a venogram or IVUS)
+to make sure the vein is open, give you medicines (like aspirin) to stop clots, and use
+drugs or surgery if swelling starts. We will let you know right away if we see this, set up
+more scans to check it, and explain what we are doing to make it better.
+– Renal Failure (Kidney Damage):
+∗ What It Is: The dye we use to see your veins on X-ray can sometimes hurt your kidneys,
+especially if they’re already weak from things like diabetes or not drinking enough water.
+Contrast-induced nephropathy occurs in 3-7% of cases.
+7
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+∗ How It Might Feel: You might pee less than usual, see swelling in your legs or hands,
+feel tired, or get nauseous a day or two after the procedure.
+∗ How Serious: It could be a small problem that gets better on its own, or it could make
+your kidneys stop working well, needing special treatment like dialysis in rare cases.
+∗ How Long: It might last a few days or weeks, but if it’s really bad, it could affect your
+kidneys for a long time.
+∗ What We Will Do: We will test your kidney function with a blood draw before the
+procedure, give you fluids through an IV to protect your kidneys, and use as little dye as
+we can. If your kidneys start having trouble, we will get a kidney doctor to help, adjust
+your care, and tell you what is happening and how we will support you.
+– Contrast Allergy:
+∗ What It Is: Your body might react to the dye we use, which has iodine in it, causing
+anything from a mild rash to a dangerous allergic attack called anaphylaxis. Severe
+reactions occur in <0.1% of cases.
+∗ How It Might Feel: A mild reaction could mean itchy skin, a rash, or hives showing up
+soon after the dye goes in. A big reaction might make it hard to breathe, swell your throat,
+or speed up your heart, which would feel scary and urgent.
+∗ How Serious: It could be just annoying or, if it’s a big reaction, life-threatening without
+quick help.
+∗ How Long: Mild stuff might last a few hours and fade; a serious reaction needs treatment
+right away but usually gets better fast with care.
+∗ What We Will Do: We will ask if you have ever had allergies, especially to dye or shellfish,
+and might give you medicines (like steroids) ahead of time if you are at risk. We’ve got
+emergency drugs and equipment ready in the room, and if you start reacting, we will
+treat you instantly and let you know what’s going on while we help.
+– Groin Hematoma (Bleeding at the Access Site):
+∗ What It Is: Blood can pool under your skin where we put the catheter in your groin,
+making a bruise or lump because of bleeding from the vein or artery there. Occurs in
+5-10% of femoral access cases.
+∗ How It Might Feel: You might see a dark spot or feel a sore, swollen area in your groin,
+maybe tender when you touch it or move.
+∗ How Serious: Usually it’s just bothersome, but if it gets big, it could press on things
+nearby and hurt more or need fixing.
+∗ How Long: It could show up right after and last days to weeks; small ones heal up, bigger
+ones take longer or need help.
+∗ What We Will Do: We will use an ultrasound to guide where we poke, press on it or use
+a special device to close it after, and check it often (every 15 minutes for an hour). If it
+is growing, we will use ice, more pressure, or surgery if it is bad, and we will keep you
+posted on what we see and do.
+– Pseudoaneurysm (False Aneurysm at Access Site):
+∗ What It Is: This is when blood leaks out of the artery in your groin but gets trapped in a
+8
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+pocket next to it, making a lump that pulses because it’s still connected to your blood
+flow. Incidence is 0.5-2% post-catheterization.
+∗ How It Might Feel: You might feel a throbbing or beating lump in your groin, some pain,
+or swelling that doesn’t go away like a regular bruise would.
+∗ How Serious: It is usually manageable but could burst or cause clots if we do not fix it,
+making it a medium worry.
+∗ How Long: It might stick around until we treat it, possibly showing up hours or days
+later and lasting weeks if ignored.
+∗ What We Will Do: We will check with an ultrasound if your groin looks odd after the
+procedure, and fix it by pressing on it with ultrasound help or surgery if needed. We will
+tell you if we think this is happening and what we will do next.
+– Permanent or Long-Term Post-Procedural Pain at Intervention Sites:
+∗ What It Is: You might have lasting pain where we went in (like your groin) or where the
+stent sits, maybe from irritated nerves, scar tissue, or inflammation that doesn’t settle
+down. Chronic pain occurs in 1-3% of cases.
+∗ How It Might Feel: It could be a steady ache, a burning feeling, or sharp twinges,
+especially when you move or press on it, lasting past 3 months.
+∗ How Serious: It might be a nuisance or make daily stuff harder, but it’s not usually
+dangerous, just tough to live with.
+∗ How Long: It could go on for months or even years if it turns into a chronic thing.
+∗ What We Will Do: We will numb the area during the procedure, and give you pain
+medicines if it keeps up. We will talk with you about how it feels and adjust your plan to
+make you more comfortable.
+– Mortality (Death):
+∗ What It Is: This is the worst thing that could happen, where a really bad problem like a
+huge brain bleed, stroke, or allergic shock can’t be fixed, and you don’t survive despite
+our best efforts. Mortality risk is <0.5% in venous stenting.
+∗ How It Might Feel: It would come after something big, like passing out, not being able
+to breathe, or your heart stopping; you wouldn’t feel it long because it’s so fast.
+∗ How Serious: This is as serious as it gets; it means losing your life.
+∗ How Long: It would happen suddenly and be permanent.
+∗ What We Will Do: We will check your health carefully before to make sure you are okay
+for this, watch you super closely during and after (vitals every 15 minutes), and have a
+full emergency team ready with all the tools to save you. If anything starts going wrong,
+we will act right away and tell your family everything we are doing to try to help you.
+– Other Possible Risks:
+∗ Infection: Germs could get in where the catheter goes, making your skin red, warm,
+swollen, or giving you a fever. Risk is 1-2%. We’ll keep everything clean, watch the spot,
+and give you antibiotics if it looks infected, letting you know what to look out for.
+∗ Radiation Exposure: The X-rays we use give off a little radiation, like what you’d get
+9
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+from a few plane flights. We’ll keep it as short as possible and cover you with shields,
+and there’s no immediate feeling from it; we’ll explain it if you’re curious.
+∗ Thrombosis (Clot Formation): A clot could form in your vein or on the stent, maybe
+making your neck or arm swell or feel heavy. Stent thrombosis occurs in 3-5% of cases.
+We will give you blood thinners, check the vein’s flow after, and tell you if we see a clot,
+fixing it with medicine or more procedures if needed.
+• Potential Benefits:
+– Symptom Improvement:
+∗ The procedure might make your headaches less painful or happen less often, clear up
+some of that fuzzy thinking (brain fog), or quiet down the ringing or buzzing in your
+ears (tinnitus). For example, some people with vein problems like yours have felt their
+tinnitus get softer or less bothersome after similar treatments. You might find it easier to
+focus at work, enjoy quiet moments, or sleep without that pounding in your head.
+∗ How We’ll Check: We’ll use questionnaires, like the Headache Impact Test (HIT-6),
+Brain Fog Scale (BFS), and Tinnitus Handicap Inventory (THI), before the procedure,
+then at 2 to 4 weeks, 4 weeks to 8 weeks, and 3 to 6 months after, with optional remote
+collection in the interval period, to see if your symptoms change. We’ll share your results
+with you so you know how you’re doing.
+– Better Quality of Life:
+∗ If your symptoms get better, you could feel more like yourself, maybe have more energy
+to do things you love, like spending time with friends or family, without headaches or
+fog slowing you down. Your mood might lift, you could sleep better, or daily tasks might
+not feel so hard. Even small changes could make a big difference in how you feel overall.
+∗ How We’ll Check: The SF-36 survey will ask about your energy, mood, pain, and daily
+activities before and after the procedure, with monthly remote options. We’ll look at
+these answers to see if your life feels better, and we’ll go over them with you at the end.
+– Reduced Medication Use:
+∗ If the procedure helps, you might not need as many pills, like painkillers for headaches,
+drugs to stay awake through brain fog, or anything you take for tinnitus. That could mean
+fewer side effects (like stomach upset from pain meds) or less hassle keeping up with
+prescriptions.
+∗ How We’ll Check: We’ll ask you what medicines you’re taking at the start, 2 to 4 weeks,
+and 3 to 6 months, with monthly checks if you opt in remotely, and see if that list shrinks.
+We’ll talk with you about any changes and how they feel.
+– Helping Others:
+∗ Even if you don’t feel a big difference, your part in this study will teach us more about
+whether fixing these veins can help people with symptoms like yours. That could lead to
+better treatments down the road, not just for you, but for others too.
+∗ How We’ll Check: Your answers and procedure results will go into our study data. We’ll
+write up what we learn and share it with you and the medical world, so your effort counts
+no matter what.
+• Protection of Subjects:
+10
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+– De-identification & Data Security: All data are de-identified at collection using a unique
+study ID; the linkage file is stored separately. Data are stored on encrypted servers (encryption at rest and in transit), with role-based access and audit logs. Retention is 5 years, then
+purge/archival per institutional policy.
+– Minimal Necessary PHI: Only the minimum PHI required for study conduct is accessed;
+exports for analysis use de-identified datasets.
+– Informed Consent Process: Consent obtained by trained study staff with ample time
+for questions/answers; teach-back is used to confirm understanding; language-appropriate
+forms and interpreter services are offered; participation is voluntary and can be withdrawn
+at any time without impact on clinical care.
+– DSMB Oversight: The team will review safety/efficacy data quarterly or per every 30 subjects enrolled, whichever comes first; convene ad hoc meeting with the St. Francis Research
+stewardship for serious/unanticipated problems; may recommend protocol modification,
+pause, or termination.
+– Adverse Event Monitoring & Reporting: Bedside clinical monitoring plus protocol
+AE/SAE capture with prompt reporting to the IRB/DSMB per institutional timelines; clear
+pathways for medical management and follow-up.
+– Risk Minimization: Standardized procedural techniques, lowest reasonable contrast/radiation, renal protection when indicated, and immediate escalation pathways for complications.
+– Confidentiality & Sharing: Any data sharing uses de-identified datasets; external sharing
+requires IRB/DSMB approval and data-use agreements.
+
+References
+1.
+
+Bradbury S, Eggleston C. Postural hypotension: A report of three cases. American
+heart journal [Internet]. 1925 Oct 1 [cited 2024 Dec 26];1(1):73–86. Available from:
+https://www.sciencedirect.com/science/article/pii/S0002870325900075
+
+2.
+
+Rutan GH, Hermanson B, Bild DE, Kittner SJ, LaBaw F, Tell GS. Orthostatic hypotension in older adults. the cardiovascular health study. CHS collaborative research group.
+Hypertension. 1992 Jun;19(6):508–19.
+
+3.
+
+Kulkarni S, Jenkins D, Dhar A, Mir F. Treating lows: Management of orthostatic hypotension. J cardiovasc pharmacol [Internet]. 2024 Sep 3 [cited 2025 Jan 1];84(3):303–15.
+Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11368167/
+
+4.
+
+Ricci F, Fedorowski A, Radico F, Romanello M, Tatasciore A, Di Nicola M, et al. Cardiovascular morbidity and mortality related to orthostatic hypotension: a meta-analysis of
+prospective observational studies. Eur heart j. 2015 Jul 1;36(25):1609–17.
+
+5.
+
+Ko D, Preis SR, Lubitz SA, McManus DD, Vasan RS, Hamburg NM, et al. Relation
+of orthostatic hypotension with new-onset atrial fibrillation (from the framingham heart
+study). The american journal of cardiology [Internet]. 2018 Mar 1 [cited 2023 Jul
+18];121(5):596–601. Available from: https://www.sciencedirect.com/science/
+article/pii/S0002914917318611
+11
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+6.
+
+Bell EJ, Agarwal SK, Cushman M, Heckbert SR, Lutsey PL, Folsom AR. Orthostatic
+hypotension and risk of venous thromboembolism in 2 cohort studies. Am j hypertens
+[Internet]. 2016 May [cited 2023 Jul 11];29(5):634–40. Available from: https://www.
+ncbi.nlm.nih.gov/pmc/articles/PMC5014082/
+
+7.
+
+Franceschini N, Rose K, Astor BC, Couper D, Vupputuri S. Orthostatic hypotension is
+associated with incident chronic kidney disease: The atherosclerosis risk in communities
+study. Hypertension [Internet]. 2010 Dec [cited 2023 Jul 26];56(6):1054–9. Available
+from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3147024/
+
+8.
+
+Sra J, Maglio C, Biehl M, Dhala A, Blanck Z, Deshpande S, et al. Efficacy of midodrine
+hydrochloride in neurocardiogenic syncope refractory to standard therapy. Journal of
+cardiovascular electrophysiology [Internet]. 1997 [cited 2023 Jul 18];8(1):42–6. Available
+from: https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1540-8167.19
+97.tb00607.x
+
+9.
+
+Vaidyanathan S, Soni BM, Hughes PL. Midodrine: insidious development of urologic
+adverse effects in patients with spinal cord injury: a report of 2 cases. Adv ther.
+2007;24(4):712–20.
+
+10.
+
+Burns A, Brown TM, Semple P. Extreme metabolic alkalosis with fludrocortisone therapy.
+Postgrad med j [Internet]. 1983 Aug [cited 2025 Jan 6];59(694):506–7. Available from:
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2417584/
+
+11.
+
+Willis FR, Byrne GC, Jones TW. Fludrocortisone induced heart failure in addison’s disease.
+J paediatr child health. 1994 Jun;30(3):280–1.
+
+12.
+
+Kaufmann H, Freeman R, Biaggioni I, Low P, Pedder S, Hewitt LA, et al. Droxidopa
+for neurogenic orthostatic hypotension: A randomized, placebo-controlled, phase 3 trial.
+Neurology [Internet]. 2014 Jul 22 [cited 2024 Nov 12];83(4):328. Available from: https:
+//pmc.ncbi.nlm.nih.gov/articles/PMC4115605/
+
+13.
+
+Remijn-Nelissen L, Verschuuren JJGM, Tannemaat MR. The effectiveness and side effects
+of pyridostigmine in the treatment of myasthenia gravis: a cross-sectional study. Neuromuscular disorders [Internet]. 2022 Oct 1 [cited 2024 Nov 12];32(10):790–9. Available from:
+https://www.nmd-journal.com/article/S0960-8966(22)00652-6/fulltext
+
+14.
+
+Levick JR. An introduction to cardiovascular physiology. London ; Butterworths; 1991.
+
+15.
+
+Ketch T, Biaggioni I, Robertson R, Robertson D. Four faces of baroreflex failure: hypertensive crisis, volatile hypertension, orthostatic tachycardia, and malignant vagotonia.
+Circulation. 2002 May 28;105(21):2518–23.
+
+16.
+
+Shapiro E. Adolf fick–forgotten genius of cardiology.
+8;30(6):662–5.
+
+17.
+
+Magder S. The meaning of blood pressure. Crit care [Internet]. 2018 Oct 11 [cited 2025
+Jan 1];22:257. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PM
+C6180453/
+
+12
+
+Am j cardiol.
+
+1972 Nov
+
+STANDUP 2 Study Protocol
+
+September 22, 2025
+
+18.
+
+Wang Y, Payne SJ. Static autoregulation in humans. J cereb blood flow metab [Internet].
+2024 Nov [cited 2025 Jan 1];44(11):1191–207. Available from: https://www.ncbi.n
+lm.nih.gov/pmc/articles/PMC11542139/
+
+19.
+
+Normahani P, Shalhoub J, Narayanan S. Repurposing the systemic venous return model
+for conceptualisation of chronic venous insufficiency and its management. Phlebology
+[Internet]. 2020 Dec [cited 2025 Jan 1];35(10):749–51. Available from: https://www.
+ncbi.nlm.nih.gov/pmc/articles/PMC7675772/
+
+20.
+
+Aoki M, Sakaida Y, Tanaka K, Mizuta K, Ito Y. Evidence for vestibular dysfunction in orthostatic hypotension. Exp brain res [Internet]. 2012 Mar 1 [cited 2025 Sep 5];217(2):251–9.
+Available from: https://doi.org/10.1007/s00221-011-2989-0
+
+21.
+
+Stewart JM. Pooling in chronic orthostatic intolerance. Circulation [Internet]. 2002 May
+14 [cited 2025 Sep 6];105(19):2274–81. Available from: https://www.ahajournals.
+org/doi/10.1161/01.CIR.0000016348.55378.C4
+
+13
+
+
