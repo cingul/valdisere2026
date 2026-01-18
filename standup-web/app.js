@@ -797,6 +797,247 @@ function renderMortalityChart() {
     });
 }
 
+// ------------------------------------------------------------------
+// Intervention Animation (Stenting Simulation)
+// ------------------------------------------------------------------
+function initInterventionAnimation() {
+    const canvas = document.getElementById('canvas-intervention');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    let width, height;
+
+    // Simulation State
+    const state = {
+        stented: false,
+        expansion: 0, // 0 to 1
+        stenosisLevel: 0.7, // 70% blocked initial
+    };
+
+    // UI Elements
+    const btn = document.getElementById('btn-deploy-stent');
+    const statusLabel = document.getElementById('stent-status');
+    const flowLabel = document.getElementById('sim-flow-rate');
+    const gradientLabel = document.getElementById('sim-gradient');
+
+    // Resize Handler
+    const resize = () => {
+        const rect = canvas.getBoundingClientRect();
+        // Fallback if not yet visible
+        width = rect.width || canvas.clientWidth || 300;
+        height = rect.height || canvas.clientHeight || 150;
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        // Reset transform to avoid accumulation on multiple resizes
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+
+        // Re-spawn particles if they look invalid (first run)
+        if (particles.length > 0 && isNaN(particles[0].x)) {
+            initParticles();
+        }
+    };
+    window.addEventListener('resize', resize);
+
+    // Particles System
+    let particles = [];
+    const particleCount = 150;
+
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: Math.random() * 2 + 0.5,
+                size: Math.random() * 2 + 1,
+                color: 'rgba(239, 68, 68, 0.9)', // Bright Red (Tailwind red-500)
+                offset: Math.random() * 100
+            });
+        }
+    }
+
+    // Initial resize 
+    resize();
+    initParticles();
+
+    // Failsafe resize for layout shifts
+    setTimeout(() => { resize(); }, 500);
+
+    // Interaction
+    if (btn) {
+        btn.onclick = () => {
+            state.stented = !state.stented;
+
+            // Update UI Text
+            if (state.stented) {
+                btn.innerHTML = `<svg class="w-6 h-6 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg> Reset Simulation`;
+                btn.classList.remove('from-brand-orange', 'to-red-600');
+                btn.classList.add('from-zinc-700', 'to-zinc-900', 'text-zinc-400');
+            } else {
+                btn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg> Deploy Stent`;
+                btn.classList.add('from-brand-orange', 'to-red-600');
+                btn.classList.remove('from-zinc-700', 'to-zinc-900', 'text-zinc-400');
+            }
+        };
+    }
+
+    function animate() {
+        // Clear with a lighter background (Zinc-800) to contrast with the black container
+        ctx.fillStyle = '#27272a';
+        ctx.fillRect(0, 0, width, height);
+
+        const time = Date.now() / 1000;
+
+        // Update Expansion State smooth transition
+        if (state.stented && state.expansion < 1) {
+            state.expansion += 0.015;
+            if (state.expansion > 1) state.expansion = 1;
+        } else if (!state.stented && state.expansion > 0) {
+            state.expansion -= 0.02;
+            if (state.expansion < 0) state.expansion = 0;
+        }
+
+        // Calculate current Pinch (Stenosis factor)
+        // Expansion 0 => pinch is high (stenosisLevel). Expansion 1 => pinch is 0.
+        const currentPinch = state.stenosisLevel * (1 - state.expansion);
+
+        // Update UI Labels based on state
+        if (state.expansion > 0.8) {
+            statusLabel.innerHTML = `<span class="w-2 h-2 bg-brand-green rounded-full"></span> Flow Restored`;
+            statusLabel.className = "flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-widest";
+            flowLabel.innerText = "NORMAL (LAMINAR)"; flowLabel.className = "text-brand-green font-bold";
+            gradientLabel.innerText = "NONE (<1mmHg)"; gradientLabel.className = "text-brand-green font-bold";
+        } else {
+            statusLabel.innerHTML = `<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span> Stenosis Active`;
+            statusLabel.className = "flex items-center gap-2 text-red-500 font-bold text-sm uppercase tracking-widest";
+            flowLabel.innerText = "CRITICAL / TURBULENT"; flowLabel.className = "text-red-400 font-bold";
+            gradientLabel.innerText = "HIGH (>4mmHg)"; gradientLabel.className = "text-red-400 font-bold";
+        }
+
+
+        // Coordinate Helpers
+        const midY = height / 2;
+        const wallDist = height * 0.35; // Normal vessel radius
+
+        // ---- Draw Walls ----
+        ctx.beginPath();
+        ctx.strokeStyle = '#4a1d1d'; // Dark blood red wall
+        ctx.lineWidth = 12;
+        ctx.lineCap = 'round';
+
+        // Top Wall
+        for (let x = 0; x <= width; x += 10) {
+            // Function for wall shape: Base Y + Sine Wave + Pinch at center
+            const centerDist = Math.abs(x - width / 2);
+            const pinchEnvelope = Math.max(0, 1 - (centerDist / (width * 0.2))); // localized pinch
+
+            // The pinch moves the wall INWARDS (positive Y for top wall)
+            const y = (midY - wallDist) + (pinchEnvelope * currentPinch * wallDist * 0.9) + Math.sin(x / 50 + time) * 3;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Bottom Wall
+        ctx.beginPath();
+        for (let x = 0; x <= width; x += 10) {
+            const centerDist = Math.abs(x - width / 2);
+            const pinchEnvelope = Math.max(0, 1 - (centerDist / (width * 0.2)));
+            // Pinch moves wall INWARDS (negative Y offset from normal, or simpler: Y decreases towards mid)
+            const y = (midY + wallDist) - (pinchEnvelope * currentPinch * wallDist * 0.9) + Math.sin(x / 50 + time) * 3;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // ---- Draw Stent (If expanding) ----
+        if (state.expansion > 0.01) {
+            ctx.save();
+            ctx.globalAlpha = Math.min(1, state.expansion * 1.5); // Fade in
+
+            const stentWidth = width * 0.5; // Stent covers center 50%
+            const stentStartX = (width - stentWidth) / 2;
+            const stentRadius = wallDist * 0.85 * (0.5 + 0.5 * state.expansion); // Grows
+
+            ctx.strokeStyle = 'cyan';
+            ctx.shadowColor = 'cyan';
+            ctx.shadowBlur = 10;
+            ctx.lineWidth = 1.5;
+
+            // Draw Mesh Pattern
+            ctx.beginPath();
+            // Horizontal lines
+            const topY = midY - stentRadius;
+            const botY = midY + stentRadius;
+
+            ctx.moveTo(stentStartX, topY);
+            ctx.lineTo(stentStartX + stentWidth, topY);
+            ctx.moveTo(stentStartX, botY);
+            ctx.lineTo(stentStartX + stentWidth, botY);
+
+            // Cross hatch
+            for (let i = 0; i <= stentWidth; i += 15) {
+                // Diagonals / Diamonds
+                ctx.moveTo(stentStartX + i, topY);
+                ctx.lineTo(stentStartX + i + 10, botY);
+
+                ctx.moveTo(stentStartX + i + 10, topY);
+                ctx.lineTo(stentStartX + i, botY);
+            }
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // ---- Draw Particles (Blood Flow) ----
+        particles.forEach(p => {
+            // Logic: Update Position
+
+            // Speed calculation
+            let speed = p.vx;
+
+            // If Stenosis is active, slow down near center
+            const distToCenterX = Math.abs(p.x - width / 2);
+            if (currentPinch > 0.1 && distToCenterX < width * 0.2) {
+                speed *= 0.3; // Traffic jam
+                p.y += (Math.random() - 0.5) * 2; // Turbulence
+            } else if (state.stented && state.expansion > 0.8) {
+                speed *= 2.5; // Accelerated Laminar Flow!
+            }
+
+            p.x += speed;
+
+            // Wrap around
+            if (p.x > width) p.x = -10;
+
+            // Constrain Y (Keep inside vessel)
+            // Calculate local vessel bounds at particle X
+            const pinchEnv = Math.max(0, 1 - (Math.abs(p.x - width / 2) / (width * 0.2)));
+            const topLimit = (midY - wallDist) + (pinchEnv * currentPinch * wallDist * 0.8) + 15;
+            const botLimit = (midY + wallDist) - (pinchEnv * currentPinch * wallDist * 0.8) - 15;
+
+            if (p.y < topLimit) p.y = topLimit + Math.random();
+            if (p.y > botLimit) p.y = botLimit - Math.random();
+
+            // Draw
+            ctx.beginPath();
+            // Color shift: Darker when slow/congested, Brighter when fast
+            if (speed < 1) ctx.fillStyle = 'rgba(100, 20, 20, 0.8)';
+            else ctx.fillStyle = 'rgba(255, 60, 60, 0.9)';
+
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Existing results charts observer
     const observer = new IntersectionObserver((entries) => {
@@ -825,4 +1066,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const motivationSection = document.getElementById('motivation');
     if (motivationSection) mortalityObserver.observe(motivationSection);
+
+    // Start Intervention Animation
+    initInterventionAnimation();
 });
