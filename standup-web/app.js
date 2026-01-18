@@ -692,3 +692,137 @@ function initOhDefinition() {
 
     observer.observe(section);
 }
+
+// ------------------------------------------------------------------
+// Mortality Chart (ARIC Study)
+// ------------------------------------------------------------------
+function renderMortalityChart() {
+    const ctx = document.getElementById('chart-mortality');
+    if (!ctx) return;
+
+    if (chartInstances['chart-mortality']) {
+        chartInstances['chart-mortality'].destroy();
+    }
+
+    // Hazard Ratios
+    const dataValues = [3.2, 2.4, 1.7];
+    const labels = [
+        ['Unadjusted', '(Raw Association)'],
+        ['Demographic Adjusted', '(Age, Sex, Ethnicity)'],
+        ['Fully Adjusted', '(CVD Factors, Comorbidities)']
+    ];
+
+    chartInstances['chart-mortality'] = new Chart(ctx.getContext('2d'), {
+        type: 'bar',
+        indexAxis: 'y', // Horizontal bars
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Hazard Ratio (HR)',
+                data: dataValues,
+                backgroundColor: [
+                    'rgba(240, 87, 8, 0.9)',   // Brand Orange
+                    'rgba(240, 87, 8, 0.65)',  // Faded
+                    'rgba(240, 87, 8, 0.4)'    // More Faded
+                ],
+                borderRadius: 6,
+                barPercentage: 0.6,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'end',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: (value) => value.toFixed(1) + 'x',
+                    offset: 4
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(10, 10, 10, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#ccc',
+                    callbacks: {
+                        label: (ctx) => ` Hazard Ratio: ${ctx.raw}`
+                    }
+                },
+                annotation: {
+                    annotations: {
+                        line1: {
+                            type: 'line',
+                            xMin: 1,
+                            xMax: 1,
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            borderDash: [6, 6],
+                            label: {
+                                display: true,
+                                content: 'Baseline Risk (1.0)',
+                                position: 'start',
+                                color: 'rgba(255,255,255,0.7)',
+                                font: { size: 10 },
+                                yAdjust: -10
+                            }
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    min: 0,
+                    max: 3.5,
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    ticks: { color: '#999' },
+                    title: { display: true, text: 'Hazard Ratio (Risk Factor)', color: '#666', font: { size: 10 } }
+                },
+                y: {
+                    grid: { display: false },
+                    ticks: {
+                        color: '#eee',
+                        font: { size: 12, family: 'sans-serif' },
+                        crossAlign: 'far'
+                    }
+                }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeOutQuart',
+                delay: (context) => context.dataIndex * 300 // Staggered
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Existing results charts observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (window.globalData) {
+                    renderAllCharts(window.globalData);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 }); // Lower threshold for earlier loading
+
+    const resultsSection = document.getElementById('results');
+    if (resultsSection) observer.observe(resultsSection);
+
+    // Mortality Chart Observer
+    const mortalityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                renderMortalityChart();
+                mortalityObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    const motivationSection = document.getElementById('motivation');
+    if (motivationSection) mortalityObserver.observe(motivationSection);
+});
