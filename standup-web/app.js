@@ -25,6 +25,11 @@ function destroyChart(id) {
 
 let loadedData = null;
 
+// Register DataLabels globally if loaded
+if (typeof ChartDataLabels !== 'undefined') {
+    Chart.register(ChartDataLabels);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     initResultsObserver();
@@ -210,8 +215,6 @@ const parseCSV = (csvText) => {
     return Papa.parse(csvText, { header: true, dynamicTyping: true, skipEmptyLines: true }).data;
 };
 
-/* initResults removed - replaced by renderAllCharts */
-
 // --- KPI Stats Calculation ---
 
 function calculateStats(bpData, meqData) {
@@ -241,8 +244,6 @@ function calculateStats(bpData, meqData) {
     animateValue(document.getElementById('stat-meq-rec'), 0, avg(reductions), 3000, '%');
 }
 
-
-// --- Charts ---
 
 // --- Charts ---
 
@@ -290,6 +291,7 @@ function renderBPChart(originData) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+                datalabels: { display: false },
                 title: { display: true, text: 'Orthostatic Systolic BP Drop (mmHg)', font: { size: 16 } },
                 legend: { position: 'bottom' },
                 tooltip: {
@@ -311,14 +313,11 @@ function renderBPChart(originData) {
                 x: { display: false } // Hide x labels if too many patients
             },
             animation: {
-                delay: (context) => {
-                    let delay = 0;
-                    if (context.type === 'data' && context.mode === 'default') {
-                        delay = context.dataIndex * 50;
-                    }
-                    return delay;
-                },
-                duration: 1500 // Intermediate speed
+                y: {
+                    duration: 2000,
+                    easing: 'easeOutQuart',
+                    delay: (c) => c.dataIndex * 200
+                }
             }
         }
     });
@@ -349,6 +348,7 @@ function renderBPChart(originData) {
             maintainAspectRatio: false,
             layout: { padding: { top: 10, bottom: 10 } },
             plugins: {
+                datalabels: { display: false },
                 title: { display: true, text: 'Individual Patient Improvement', font: { size: 16 } },
                 legend: { display: false },
                 tooltip: {
@@ -371,56 +371,6 @@ function renderBPChart(originData) {
     });
 }
 
-// ... (skipping MEQ/CGI charts) ...
-
-const runSequence = () => {
-    // Step 1: Sitting (T+1.5s)
-    timeouts.push(setTimeout(() => {
-        // Visuals
-        imgSupine.classList.remove('opacity-100');
-        imgSupine.classList.add('opacity-0');
-
-        imgSitting.classList.remove('opacity-0');
-        imgSitting.classList.add('opacity-100');
-
-        // Label
-        label.innerHTML = 'Sitting Up';
-        label.classList.remove('text-brand-taupe');
-        label.classList.add('text-white');
-
-        // BP Drop (140 -> 130) (10pt drop)
-        animateValue(bpValue, 140, 130, 2000);
-    }, 1500));
-
-    // Step 2: Standing (T+5s)
-    timeouts.push(setTimeout(() => {
-        // Visuals
-        imgSitting.classList.remove('opacity-100');
-        imgSitting.classList.add('opacity-0');
-
-        imgStanding.classList.remove('opacity-0');
-        imgStanding.classList.add('opacity-100');
-
-        // Label
-        label.innerHTML = 'Standing';
-        label.classList.remove('text-white');
-        label.classList.add('text-brand-orange');
-
-        // BP Drop (130 -> 70) (Big drop)
-        animateValue(bpValue, 130, 70, 2500);
-
-        // Turn Red
-        bpValue.style.color = '#ef4444';
-
-        // Show Annotation
-        setTimeout(() => {
-            annotation.classList.remove('opacity-0');
-            annotation.classList.add('opacity-100');
-        }, 1000);
-
-    }, 5000));
-};
-
 function renderMEQChart(data) {
     destroyChart('chart-meq');
     const ctx = document.getElementById('chart-meq').getContext('2d');
@@ -440,18 +390,22 @@ function renderMEQChart(data) {
                 {
                     label: 'Pre-Intervention Dose',
                     data: pre,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                    borderColor: 'rgba(255, 255, 255, 0.5)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.6)', // Red (Bad)
+                    borderColor: 'rgba(239, 68, 68, 0.8)',
                     borderWidth: 1,
                     borderRadius: 4,
-                    order: 1
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.9
                 },
                 {
                     label: 'Post-Intervention Dose',
                     data: post,
-                    backgroundColor: THEME.orange, // Orange for current state
+                    backgroundColor: 'rgba(74, 222, 128, 0.9)', // Green (Good)
+                    borderColor: 'rgba(74, 222, 128, 1)',
+                    borderWidth: 1,
                     borderRadius: 4,
-                    order: 0
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.9
                 }
             ]
         },
@@ -459,12 +413,14 @@ function renderMEQChart(data) {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
+                datalabels: { display: false },
                 title: { display: true, text: 'Medication Burden (Midodrine Equivalents)', font: { size: 16 } },
                 tooltip: {
                     callbacks: {
                         label: (ctx) => `${ctx.dataset.label}: ${ctx.raw} mg`
                     }
-                }
+                },
+                legend: { position: 'bottom' }
             },
             scales: {
                 y: {
@@ -475,7 +431,7 @@ function renderMEQChart(data) {
                 x: { display: false }
             },
             animation: {
-                duration: 3000, // Intermediate 3000
+                duration: 2000,
                 easing: 'easeOutQuart'
             }
         }
@@ -488,15 +444,19 @@ function renderCGIChart(data) {
 
     // Group By Score
     const counts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 };
+    let total = 0;
     data.forEach(d => {
         let score = d['CGI-I Score'];
-        if (counts[score] !== undefined) counts[score]++;
+        if (counts[score] !== undefined) {
+            counts[score]++;
+            total++;
+        }
     });
 
     // Included Score 5
     const chartData = [counts[1], counts[2], counts[3], counts[4], counts[5]];
-    const chartLabels = ['Very Much Improved (1)', 'Much Improved (2)', 'Minimally Improved (3)', 'No Change (4)', 'Minimally Worse (5)'];
-    const chartColors = [THEME.greenLight, '#86efac', '#bbf7d0', '#52525b', '#ef4444']; // Gradients + Red for worse
+    const chartLabels = ['Very Much Improved', 'Much Improved', 'Minimally Improved', 'No Change', 'Minimally Worse'];
+    const chartColors = [THEME.greenLight, '#86efac', '#bbf7d0', '#52525b', '#ef4444'];
 
     chartInstances['chart-cgi'] = new Chart(ctx, {
         type: 'doughnut',
@@ -512,15 +472,31 @@ function renderCGIChart(data) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: '60%',
+            cutout: '55%',
+            layout: { padding: 20 },
             plugins: {
-                legend: { position: 'right', labels: { color: THEME.taupe } },
-                title: { display: true, text: 'Patient Reported Outcomes', font: { size: 18 } }
+                legend: {
+                    position: 'right',
+                    labels: { color: THEME.taupe, font: { size: 12 } }
+                },
+                title: { display: true, text: 'Patient Reported Outcomes', font: { size: 18 } },
+                datalabels: {
+                    display: true,
+                    color: '#fff',
+                    font: { weight: 'bold', size: 14 },
+                    formatter: (value, ctx) => {
+                        if (value === 0) return '';
+                        return value; // Just count as requested
+                    },
+                    anchor: 'center',
+                    align: 'center',
+                    offset: 0
+                }
             },
             animation: {
                 animateScale: true,
                 animateRotate: true,
-                duration: 3000 // Intermediate 3000
+                duration: 2500
             }
         }
     });
@@ -532,17 +508,12 @@ function renderCGIChart(data) {
 function animateEconomicCounter(obj, start, end, duration) {
     if (!obj) return;
     let startTimestamp = null;
-
-    // Start: Taupe (C5B7AB) -> [197, 183, 171]
-    // End: Red (EF4444) -> [239, 68, 68]
     const startColor = [197, 183, 171];
     const endColor = [239, 68, 68];
 
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-        // Ease out expo
         const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
 
         // Update Value
@@ -568,8 +539,6 @@ function animateValue(obj, start, end, duration, suffix = '') {
     const step = (timestamp) => {
         if (!startTimestamp) startTimestamp = timestamp;
         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-        // Ease out expo
         const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
 
         const current = start + (end - start) * ease;
@@ -587,7 +556,6 @@ window.switchTab = (tabId) => {
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
     document.getElementById(`view-${tabId}`).classList.remove('hidden');
 
-    // Button States
     document.querySelectorAll('button[onclick^="switchTab"]').forEach(button => {
         button.classList.remove('bg-brand-orange', 'text-brand-dark', 'font-bold', 'border-brand-orange');
         button.classList.add('border-white/20', 'text-brand-taupe');
@@ -596,30 +564,30 @@ window.switchTab = (tabId) => {
     const activeBtn = document.getElementById(`tab-${tabId}`);
     activeBtn.classList.remove('border-white/20', 'text-brand-taupe');
     activeBtn.classList.add('bg-brand-orange', 'text-brand-dark', 'font-bold', 'border-brand-orange');
+
+    // Force Re-render to replay animations
+    setTimeout(() => {
+        renderAllCharts();
+    }, 50);
 };
 
 
 // --- Motivation Page Animations ---
-// We keep the logic for the existing counters if they exist
 function initCounters() {
-    // Only run if elements exist
     const c1 = document.getElementById('counter-total');
     const c2 = document.getElementById('counter-rx');
 
     if (!c1 || !c2) return;
 
-    // Trigger when 20% visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Economic Counters: Slow (5000ms) + Red Transition
                 animateEconomicCounter(c1, 0, 1000000000, 5000);
                 animateEconomicCounter(c2, 0, 87000000, 5000);
             } else {
-                // Reset for replay
                 c1.innerHTML = '$0';
                 c2.innerHTML = '$0';
-                c1.style.color = '#C5B7AB'; // Reset color
+                c1.style.color = '#C5B7AB';
                 c2.style.color = '#C5B7AB';
             }
         });
@@ -638,24 +606,18 @@ function initOhDefinition() {
     const bpValue = document.getElementById('bp-value');
     const annotation = document.getElementById('bp-annotation');
 
-    if (!section) {
-        return;
-    }
+    if (!section) return;
 
     let timeouts = [];
 
     const resetState = () => {
-        // Clear pending timeouts
         timeouts.forEach(t => clearTimeout(t));
         timeouts = [];
 
-        // Reset Visuals
         imgSupine.classList.remove('opacity-0');
         imgSupine.classList.add('opacity-100');
-
         imgSitting.classList.remove('opacity-100');
         imgSitting.classList.add('opacity-0');
-
         imgStanding.classList.remove('opacity-100');
         imgStanding.classList.add('opacity-0');
 
@@ -665,13 +627,12 @@ function initOhDefinition() {
 
         bpValue.innerHTML = '140';
         bpValue.style.color = 'white';
-
         annotation.classList.remove('opacity-100');
         annotation.classList.add('opacity-0');
     };
 
     const runSequence = () => {
-        // Step 1: Sitting (T+1s)
+        // Step 1: Sitting (T+1.5s)
         timeouts.push(setTimeout(() => {
             // Visuals
             imgSupine.classList.remove('opacity-100');
@@ -686,10 +647,10 @@ function initOhDefinition() {
             label.classList.add('text-white');
 
             // BP Drop (140 -> 130) (10pt drop)
-            animateValue(bpValue, 140, 130, 1000);
-        }, 1000));
+            animateValue(bpValue, 140, 130, 2000);
+        }, 1500));
 
-        // Step 2: Standing (T+3s)
+        // Step 2: Standing (T+5s)
         timeouts.push(setTimeout(() => {
             // Visuals
             imgSitting.classList.remove('opacity-100');
@@ -704,7 +665,7 @@ function initOhDefinition() {
             label.classList.add('text-brand-orange');
 
             // BP Drop (130 -> 70) (Big drop)
-            animateValue(bpValue, 130, 70, 1500);
+            animateValue(bpValue, 130, 70, 2500);
 
             // Turn Red
             bpValue.style.color = '#ef4444';
@@ -715,7 +676,7 @@ function initOhDefinition() {
                 annotation.classList.add('opacity-100');
             }, 1000);
 
-        }, 3000));
+        }, 5000));
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -727,10 +688,7 @@ function initOhDefinition() {
                 resetState();
             }
         });
-    }, { threshold: 0.2 }); // Wait until 20% visible to start
+    }, { threshold: 0.2 });
 
     observer.observe(section);
 }
-
-// --- Initialization ---
-// (Duplicate listener removed)

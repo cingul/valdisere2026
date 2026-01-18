@@ -31,12 +31,14 @@ st.set_page_config(page_title="STANDUP II - Video Studio", layout="wide")
 # --- Face Anonymizer Logic (Tasks API + MoviePy + Temporal Persistence) ---
 
 class FaceAnonymizer:
-    def __init__(self, model_path, confidence=0.1, pixelation_factor=20, persistence_frames=30, padding=0.3):
+    def __init__(self, model_path, confidence=0.1, pixelation_factor=20, persistence_frames=30, padding=0.3, manual_overrides=None, manual_only=False):
         self.model_path = model_path
         self.confidence = confidence
         self.pixelation_factor = pixelation_factor
         self.persistence = persistence_frames
         self.padding = padding
+        self.manual_overrides = manual_overrides if manual_overrides else []
+        self.manual_only = manual_only
         
         # State
         self.active_faces = [] # List of {'bbox': [x,y,w,h], 'ttl': int}
@@ -50,7 +52,7 @@ class FaceAnonymizer:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.detector.close()
 
-    def process_frame(self, image_rgb):
+    def process_frame(self, image_rgb, t=0):
         # 1. Prepare Image
         if not image_rgb.flags['WRITEABLE']:
             image_rgb = image_rgb.copy()
@@ -58,24 +60,63 @@ class FaceAnonymizer:
         h_img, w_img, c = image_rgb.shape
         mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=np.ascontiguousarray(image_rgb))
         
-        # 2. Detect
+        # 2. Check Manual Overrides
+        # List of (start, end, x, y, w, h)
+        override_faces = []
+        is_overridden = False
+        
+        for entry in self.manual_overrides:
+            # Check length to support both old (start, end) and new format
+            if len(entry) == 2:
+                # Legacy fallback (start, end) -> Default center
+                s, e = entry
+                if s <= t <= e:
+                    # Default: Top 20% center
+                    face_w = w_img // 4
+                    face_h = w_img // 4
+                    face_x = (w_img - face_w) // 2
+                    face_y = h_img // 8
+                    override_faces.append([face_x, face_y, face_w, face_h])
+                    is_overridden = True
+            elif len(entry) == 6:
+                # Explicit (start, end, x, y, w, h)
+                s, e, ox, oy, ow, oh = entry
+                if s <= t <= e:
+                    # Scale normalized coords (0-100) to pixels if needed, 
+                    # OR assuming input is already in pixels? 
+                    # Let's verify input. UI sends PIXELS.
+                    override_faces.append([int(ox), int(oy), int(ow), int(oh)])
+                    is_overridden = True
+        
+        # 3. Detect
         try:
-            detection_result = self.detector.detect(mp_image)
             current_detections = []
             
-            if detection_result.detections:
-                for detection in detection_result.detections:
-                    bbox = detection.bounding_box
-                    current_detections.append([bbox.origin_x, bbox.origin_y, bbox.width, bbox.height])
+            # Run detection normally (UNLESS manual_only is set)
+            if not self.manual_only:
+                detection_result = self.detector.detect(mp_image)
+                
+                if detection_result.detections:
+                    for detection in detection_result.detections:
+                        bbox = detection.bounding_box
+                        current_detections.append([bbox.origin_x, bbox.origin_y, bbox.width, bbox.height])
             
-            # 3. Update State (Temporal Persistence)
+            # Update State
             if current_detections:
                 self.active_faces = [{'bbox': box, 'ttl': self.persistence} for box in current_detections]
             else:
+                # Decay
                 for face in self.active_faces:
                     face['ttl'] -= 1
                 self.active_faces = [f for f in self.active_faces if f['ttl'] > 0]
                 
+            # Inject Overrides
+            for obox in override_faces:
+                self.active_faces.append({
+                    'bbox': obox,
+                    'ttl': 2 # Force blur this frame
+                })
+
         except Exception as e:
             print(f"Detection Error: {e}")
 
@@ -114,23 +155,23 @@ class FaceAnonymizer:
                     
         return image_rgb
 
-def process_video_anonymization(input_path, output_path, progress_bar, status_text):
+def process_video_anonymization(input_path, output_path, progress_bar, status_text, manual_overrides=None, manual_only=False):
     if not os.path.exists(MODEL_PATH):
         st.error(f"Model file {MODEL_PATH} not found!")
         return
     
-    status_text.text("Initializing Smart Anonymizer (Tracking + Medium Pixelation)...")
+    status_text.text(f"Initializing Anonymizer (AI={'OFF' if manual_only else 'ON'} + Manual Overrides)...")
     
     # Open Video Clip
     clip = VideoFileClip(input_path)
     
-    # Use Context Manager for Anonymizer
-    with FaceAnonymizer(MODEL_PATH) as anonymizer:
+    # Use Context Manager
+    with FaceAnonymizer(MODEL_PATH, manual_overrides=manual_overrides, manual_only=manual_only) as anonymizer:
         
-        # Transform
-        anonymized_clip = clip.image_transform(anonymizer.process_frame)
+        # Use transform() to pass time 't' (MoviePy v2 replacement for fl)
+        anonymized_clip = clip.transform(lambda gf, t: anonymizer.process_frame(gf(t), t))
         
-        status_text.text("Processing... Applying Medium Pixelation.")
+        status_text.text("Processing... Applying Pixelation.")
         anonymized_clip.write_videofile(
             output_path, 
             codec='libx264', 
@@ -146,9 +187,30 @@ def process_video_anonymization(input_path, output_path, progress_bar, status_te
 
 # --- App UI ---
 
+# --- Global File Loading ---
+try:
+    video_files = [f for f in os.listdir(CASE_DIR) if f.lower().endswith(('.mov', '.mp4'))]
+    video_files.sort()
+except FileNotFoundError:
+    video_files = []
+
+try:
+    anon_files = [f for f in os.listdir(ANON_DIR) if f.lower().endswith('.mp4')]
+    anon_files.sort()
+except FileNotFoundError:
+    anon_files = []
+    
+try:
+    angio_files = [f for f in os.listdir(ANGIO_DIR) if f.lower().endswith(('.mov', '.mp4'))]
+    angio_files.sort()
+except FileNotFoundError:
+    angio_files = []
+
+# --- App UI ---
+
 st.title("🏥 STANDUP II: Case Video Studio")
 
-tab1, tab2 = st.tabs(["🕵️ Face Anonymizer", "🎬 Sequence Editor"])
+tab1, tab2, tab3 = st.tabs(["🕵️ Face Anonymizer", "🎬 Sequence Editor", "🛠️ Manual Fixes"])
 
 # --- TAB 1: Anonymizer ---
 with tab1:
@@ -157,14 +219,6 @@ with tab1:
     
     if not os.path.exists(MODEL_PATH):
         st.error(f"⚠️ Model file `{MODEL_PATH}` not found in directory. Please check installation.")
-
-    # List .MOV or .mp4 files in case/
-    try:
-        video_files = [f for f in os.listdir(CASE_DIR) if f.lower().endswith(('.mov', '.mp4'))]
-        video_files.sort()
-    except FileNotFoundError:
-        st.error(f"Directory `{CASE_DIR}` not found.")
-        video_files = []
 
     if not video_files:
         st.warning(f"No video files found in `{CASE_DIR}/`.")
@@ -205,23 +259,17 @@ with tab2:
     
     with col_a:
         st.markdown("**Patient Clips (Anonymized)**")
-        try:
-            anon_files = [f for f in os.listdir(ANON_DIR) if f.lower().endswith('.mp4')]
-            anon_files.sort()
+        if anon_files:
             st.write(anon_files)
-        except Exception:
-            st.write("No directory.")
-            anon_files = []
+        else:
+            st.write("No files yet.")
         
     with col_b:
         st.markdown("**Angiogram Clips**")
-        try:
-            angio_files = [f for f in os.listdir(ANGIO_DIR) if f.lower().endswith(('.mov', '.mp4'))]
-            angio_files.sort()
+        if angio_files:
             st.write(angio_files)
-        except Exception:
-            st.write("No directory.")
-            angio_files = []
+        else:
+            st.write("No files found.")
 
     st.divider()
     
@@ -326,12 +374,16 @@ with tab2:
         
         chunk_sizes = [3, 3, 3, 2, 2] # Sum = 13
         
+        # Exclude special files that go to the end
+        special_end_files = ['cta.mov', 'mri.mov']
+        regular_angio = [f for f in angio_files if f not in special_end_files]
+        
         current_idx = 0
         for i, count in enumerate(chunk_sizes):
             date_val = angio_dates[i]
             for _ in range(count):
-                if current_idx < len(angio_files):
-                    f = angio_files[current_idx]
+                if current_idx < len(regular_angio):
+                    f = regular_angio[current_idx]
                     path = os.path.join(ANGIO_DIR, f)
                     
                     if is_file_ready(path):
@@ -342,6 +394,18 @@ with tab2:
                             "date": date_val
                         })
                     current_idx += 1
+
+        # Add Special Files at the END (Future Date)
+        for f in special_end_files:
+             if f in angio_files:
+                path = os.path.join(ANGIO_DIR, f)
+                if is_file_ready(path):
+                    angio_items.append({
+                        "file": f,
+                        "path": path,
+                        "type": "Angiogram (End)",
+                        "date": datetime.datetime(2030, 1, 1) # Force End
+                    })
 
         # 3. Merge & Sort
         all_items = patient_items + angio_items
@@ -402,8 +466,12 @@ with tab2:
             stat.text("Loading clips...")
             clips = []
             for item in st.session_state.sequence:
-                # Use MoviePy to load
-                clip = VideoFileClip(item["path"])
+                # Use MoviePy to load (Disable audio to prevent sync bugs, Standardize FPS)
+                clip = VideoFileClip(item["path"], audio=False)
+                
+                # Standardize Frame Rate to 30 FPS (Fixes 120fps vs 30fps concatenation issues)
+                clip = clip.with_fps(30)
+                
                 # Resize to common height (e.g. 720p) to avoid errors? Or allow varying.
                 # Ideally we resize to match the first clip or a standard size.
                 if clip.w % 2 != 0: clip = clip.cropped(width=clip.w-1)
@@ -420,7 +488,8 @@ with tab2:
             final_clip.write_videofile(
                 output_path_final, 
                 codec='libx264', 
-                audio_codec='aac', 
+                audio=False,
+                fps=30,
                 ffmpeg_params=['-pix_fmt', 'yuv420p']
             )
             
@@ -432,3 +501,136 @@ with tab2:
             st.error(f"Render Error: {e}")
 
 
+
+# --- TAB 3: Manual Fixes ---
+with tab3:
+    st.header("Manual Correction Tool")
+    st.markdown("Use this to **force-blur** a specific area (like a face missed by AI) for a time range.")
+    
+    if not video_files:
+        st.warning("No videos found.")
+    else:
+        fix_video_sel = st.selectbox("Select Source Video to Fix", video_files, key="fix_sel")
+        fix_video_path = os.path.join(CASE_DIR, fix_video_sel)
+        
+        # Check for existing anonymized version to review
+        anon_filename = f"anon_{fix_video_sel.rsplit('.', 1)[0]}.mp4"
+        anon_path = os.path.join(ANON_DIR, anon_filename)
+        
+        if os.path.exists(anon_path):
+            st.markdown("### 🔎 Step 1: Review Current Anonymization")
+            st.caption("Watch this to identify timestamps where faces are visible.")
+            st.video(anon_path)
+        else:
+            st.warning("No anonymized version found yet. Process it in Tab 1 first, or use this tool to set up preemptive fixes.")
+
+        st.divider()
+        st.markdown("### 🛠️ Step 2: Add Manual Blurs")
+        st.caption("Locate the frame in the **Source Video** and draw a box.")
+        
+        # Load clip info (lightweight)
+        try:
+            with VideoFileClip(fix_video_path) as clip:
+                duration = clip.duration
+                W, H = clip.w, clip.h
+        except:
+             st.error("Could not load video metadata.")
+             duration = 10.0
+             W, H = 1920, 1080
+        
+        c_preview, c_controls = st.columns([3, 2])
+        
+        with c_controls:
+            st.subheader("1. Locate & Define Box")
+            t_preview = st.slider("Preview Time (s)", 0.0, duration, 0.0, 0.1)
+            
+            st.write(" **Box Position**")
+            col_x, col_y = st.columns(2)
+            box_x = col_x.number_input("X (Left)", 0, W, W//2 - 100, step=10)
+            box_y = col_y.number_input("Y (Top)", 0, H, H//5, step=10)
+            
+            st.write(" **Box Size**")
+            col_w, col_h = st.columns(2)
+            box_w = col_w.number_input("Width", 10, W, 200, step=10)
+            box_h = col_h.number_input("Height", 10, H, 200, step=10)
+            
+            st.subheader("2. Set Time Range")
+            range_col1, range_col2 = st.columns(2)
+            start_t = range_col1.number_input("Start Time (s)", 0.0, duration, t_preview, 0.1)
+            end_t = range_col2.number_input("End Time (s)", 0.0, duration, min(t_preview+2.0, duration), 0.1)
+
+            if st.button("Add Manual Fix"):
+                if end_t > start_t:
+                    if "manual_fixes" not in st.session_state:
+                        st.session_state.manual_fixes = {}
+                    if fix_video_sel not in st.session_state.manual_fixes:
+                        st.session_state.manual_fixes[fix_video_sel] = []
+                    
+                    # Store 6-tuple: (Start, End, X, Y, W, H)
+                    st.session_state.manual_fixes[fix_video_sel].append((start_t, end_t, box_x, box_y, box_w, box_h))
+                    st.success(f"Added fix: {start_t}s - {end_t}s")
+                else:
+                    st.error("End time must be > Start time")
+
+        with c_preview:
+            st.subheader("Preview")
+            # Get frame
+            try:
+                with VideoFileClip(fix_video_path) as clip:
+                    frame = clip.get_frame(t_preview)
+                    # Draw Box
+                    frame_copy = frame.copy()
+                    cv2.rectangle(frame_copy, (int(box_x), int(box_y)), (int(box_x+box_w), int(box_y+box_h)), (255, 0, 0), 3)
+                    st.image(frame_copy, caption=f"Frame at {t_preview}s", use_column_width=True)
+            except Exception as e:
+                st.error(f"Error reading frame: {e}")
+
+        st.divider()
+        
+        # Show Current Fixes
+        if "manual_fixes" in st.session_state and fix_video_sel in st.session_state.manual_fixes:
+            fixes = st.session_state.manual_fixes[fix_video_sel]
+            if fixes:
+                st.write(f"**active Fixes for {fix_video_sel}:**")
+                for i, fix in enumerate(fixes):
+                    c_fix_info, c_fix_del = st.columns([4, 1])
+                    with c_fix_info:
+                        if len(fix) == 6:
+                            s, e, x, y, w, h = fix
+                            st.info(f"#{i+1}:  ⏱️ {s:.1f}-{e:.1f}s  |  📦 {x},{y} ({w}x{h})")
+                        else:
+                            s, e = fix
+                            st.info(f"#{i+1}:  ⏱️ {s:.1f}-{e:.1f}s  |  [Legacy Default Box]")
+                    with c_fix_del:
+                        if st.button("🗑️", key=f"del_fix_{i}"):
+                            st.session_state.manual_fixes[fix_video_sel].pop(i)
+                            st.rerun()
+                
+                c_act1, c_act2 = st.columns(2)
+                with c_act1:
+                    if st.button("Clear All Fixes"):
+                        st.session_state.manual_fixes[fix_video_sel] = []
+                        st.rerun()
+                with c_act2:
+                    manual_only_mode = st.checkbox("Manual Only (Disable Auto-AI)", value=False, help="If checked, ONLY your manual boxes will be blurred. The AI face detector will be turned off.")
+                    
+                    if st.button("⚡ Apply Fixes & Re-Process", type="primary"):
+                        o_filename = f"anon_{fix_video_sel.rsplit('.', 1)[0]}.mp4"
+                        o_path = os.path.join(ANON_DIR, o_filename)
+                        
+                        p_bar = st.progress(0)
+                        stat_txt = st.empty()
+                        
+                        try:
+                            process_video_anonymization(
+                                fix_video_path, 
+                                o_path, 
+                                p_bar, 
+                                stat_txt, 
+                                manual_overrides=fixes,
+                                manual_only=manual_only_mode
+                            )
+                            st.success(f"Fixed video saved: {o_filename}")
+                            st.video(o_path)
+                        except Exception as e:
+                            st.error(f"Error: {e}")
