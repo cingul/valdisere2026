@@ -85,6 +85,7 @@
             <a href="#discussion" class="hover:text-white px-3 py-2 transition-colors">Discussion</a>
             <a href="#future" class="hover:text-white px-3 py-2 transition-colors">Future</a>
             <a href="#video" class="hover:text-white px-3 py-2 transition-colors">Video</a>
+            <a href="#contact" class="hover:text-white px-3 py-2 transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -665,15 +666,22 @@
                         <div>
                             <h3 class="text-3xl font-bold text-white font-display mb-4">Venous Stenting</h3>
                             <p class="text-xl text-brand-light leading-relaxed mb-6">
-                                Venous stenting directly addresses the flow-dependent mechanisms outlined in the
+                                Venous stenting aims to address the flow-dependent mechanisms outlined in the
                                 Physiological Rationale: Baroreflex latency, Venous Return, and Glymphatic Clearance.
                             </p>
-                            <p class="text-lg text-brand-taupe leading-relaxed">
-                                The stent restores vessel
-                                cross-sectional area, eliminates pressure gradients, and reinstates the laminar flow
-                                necessary
-                                for autonomic homeostasis.
-                            </p>
+
+                            <div class="bg-zinc-900 border border-white/10 p-6 rounded-2xl mb-8">
+                                <h4 class="text-brand-orange font-bold text-sm uppercase tracking-widest mb-3">
+                                    Procedural Technique</h4>
+                                <p class="text-zinc-400 text-sm leading-relaxed font-mono">
+                                    9F sheath left femoral vein access. TracStar to right jugular vein. Pressure
+                                    measurement. IVUS of superior sagittal sinus to SVC. Venography. Stent Abre based on
+                                    imaging. Post-stenting pressure measurements and venography. TracStar to left
+                                    jugular vein. Pressure measurements. IVUS left transverse
+                                    sinus to SVC. Venography and Abre stent based on measurements. Post-stenting
+                                    pressure measurements and venography.
+                                </p>
+                            </div>
                         </div>
 
                         <div class="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
@@ -700,10 +708,7 @@
                     <!-- Right: Animation Canvas -->
                     <div
                         class="relative w-full aspect-video bg-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl ring-1 ring-white/10 group">
-                        <!-- Gradient Overlay -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10">
-                        </div>
+
 
                         <canvas id="canvas-intervention" class="relative z-0 w-full h-full"></canvas>
 
@@ -713,10 +718,7 @@
                                 class="px-3 py-1 bg-black/50 backdrop-blur text-xs text-brand-taupe border border-white/10 rounded font-mono">
                                 FLOW RATE: <span id="sim-flow-rate" class="text-red-400 font-bold">CRITICAL</span>
                             </div>
-                            <div
-                                class="px-3 py-1 bg-black/50 backdrop-blur text-xs text-brand-taupe border border-white/10 rounded font-mono">
-                                GRADIENT: <span id="sim-gradient" class="text-red-400 font-bold">HIGH</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -1202,6 +1204,84 @@
                 </div>
         </section>
 
+        <!-- Patient History Section -->
+        <section id="history" class="py-24 px-8 md:px-24 bg-zinc-950 border-t border-white/5">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl font-bold text-white mb-12 font-display text-center">Patient Profile</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <!-- Narrative -->
+                    <div class="space-y-6">
+                        <div class="bg-white/5 p-8 rounded-2xl border border-white/10">
+                            <h3 class="text-2xl font-bold text-brand-orange mb-4 font-display">Clinical History</h3>
+                            <div class="space-y-4 text-brand-light leading-relaxed text-sm">
+                                <p>
+                                    <strong class="text-white">Ischemic Cardiomyopathy & Migraines:</strong> History of
+                                    ischemic cardiomyopathy following DHE treatment for severe migraines (2003) and
+                                    chronic left ventricle thrombus requiring warfarin therapy. Notable history of
+                                    interstitial lung disease and myocardial infarction (2001).
+                                </p>
+                                <p>
+                                    <strong class="text-white">Symptom Onset & Progression:</strong> The patient first
+                                    experienced syncope in January 2025. These episodes recurred repeatedly until August
+                                    2025, when the phenotype transitioned to a violent orthostatic tremor.
+                                </p>
+                                <p>
+                                    <strong class="text-white">Current Presentation:</strong> She is now severely
+                                    symptomatic and functionally debilitated. Standing still for even a few seconds
+                                    induces a violent tremor, preventing basic activities of daily living such as
+                                    showering, cooking, or shopping.
+                                </p>
+                                <p>
+                                    <strong class="text-white">Recent Events:</strong> On 1/31/25, she experienced a
+                                    syncopal episode in a bank, striking her right side and sustaining a spinal
+                                    fracture. She continues to report 10/10 back pain. Similar episodes occurred the
+                                    previous summer in Cape May and during apple picking in the fall.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Symptoms List -->
+                    <div class="bg-brand-orange/5 p-8 rounded-2xl border border-brand-orange/20">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                            <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                                </path>
+                            </svg>
+                            Key Symptoms
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2"></span>
+                                <span class="text-brand-light"> Generalized limb shaking upon standing <span
+                                        class="text-brand-orange font-bold">(Latency: 5-8 seconds)</span></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2"></span>
+                                <span class="text-brand-light">Headaches and "echo" sensation in ears (Pulsatile
+                                    Tinnitus)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2"></span>
+                                <span class="text-brand-light">Severe back pain (post-syncopal spine fracture)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2"></span>
+                                <span class="text-brand-light">Shortness of breath & Chest discomfort</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-orange mt-2"></span>
+                                <span class="text-brand-light">Gait instability and fear of falling</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Case Video Section -->
         <section id="video" class="min-h-screen flex flex-col justify-center px-8 md:px-24 py-24 bg-black">
             <div class="mb-16 text-center">
@@ -1227,7 +1307,7 @@
                     <!-- QR Code -->
                     <div class="bg-white p-4 rounded-2xl shadow-2xl shadow-brand-orange/10">
                         <img src="assets/valdisereqrcode.png" alt="Scan for Study Details"
-                            class="w-48 h-48 object-contain">
+                            class="w-72 h-72 object-contain">
                     </div>
 
                     <div class="text-left space-y-4">
@@ -1242,8 +1322,8 @@
                             </div>
                             <div>
                                 <div class="text-sm text-brand-taupe uppercase tracking-wider">Email</div>
-                                <a href="mailto:karthikeyan.arcot@chsli.org"
-                                    class="text-white text-lg font-bold hover:text-brand-orange transition-colors">karthikeyan.arcot@chsli.org</a>
+                                <a href="mailto:info@cingulum.org"
+                                    class="text-white text-lg font-bold hover:text-brand-orange transition-colors">info@cingulum.org</a>
                             </div>
                         </div>
 

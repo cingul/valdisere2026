@@ -910,12 +910,10 @@ function initInterventionAnimation() {
             statusLabel.innerHTML = `<span class="w-2 h-2 bg-brand-green rounded-full"></span> Flow Restored`;
             statusLabel.className = "flex items-center gap-2 text-brand-green font-bold text-sm uppercase tracking-widest";
             flowLabel.innerText = "NORMAL (LAMINAR)"; flowLabel.className = "text-brand-green font-bold";
-            gradientLabel.innerText = "NONE (<1mmHg)"; gradientLabel.className = "text-brand-green font-bold";
         } else {
             statusLabel.innerHTML = `<span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span> Stenosis Active`;
             statusLabel.className = "flex items-center gap-2 text-red-500 font-bold text-sm uppercase tracking-widest";
             flowLabel.innerText = "CRITICAL / TURBULENT"; flowLabel.className = "text-red-400 font-bold";
-            gradientLabel.innerText = "HIGH (>4mmHg)"; gradientLabel.className = "text-red-400 font-bold";
         }
 
 
@@ -925,7 +923,7 @@ function initInterventionAnimation() {
 
         // ---- Draw Walls ----
         ctx.beginPath();
-        ctx.strokeStyle = '#4a1d1d'; // Dark blood red wall
+        ctx.strokeStyle = '#ef4444'; // Bright Red Wall
         ctx.lineWidth = 12;
         ctx.lineCap = 'round';
 
