@@ -819,7 +819,7 @@ function initInterventionAnimation() {
     const btn = document.getElementById('btn-deploy-stent');
     const statusLabel = document.getElementById('stent-status');
     const flowLabel = document.getElementById('sim-flow-rate');
-    const gradientLabel = document.getElementById('sim-gradient');
+
 
     // Resize Handler
     const resize = () => {
@@ -923,7 +923,7 @@ function initInterventionAnimation() {
 
         // ---- Draw Walls ----
         ctx.beginPath();
-        ctx.strokeStyle = '#ef4444'; // Bright Red Wall
+        ctx.strokeStyle = '#4a1d1d'; // Dark blood red wall
         ctx.lineWidth = 12;
         ctx.lineCap = 'round';
 
