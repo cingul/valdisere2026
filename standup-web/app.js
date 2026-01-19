@@ -697,8 +697,13 @@ function initOhDefinition() {
 // Mortality Chart (ARIC Study)
 // ------------------------------------------------------------------
 function renderMortalityChart() {
+    console.log("Attempting to render Mortality Chart...");
     const ctx = document.getElementById('chart-mortality');
-    if (!ctx) return;
+    if (!ctx) {
+        console.error("Mortality Chart Canvas NOT FOUND");
+        return;
+    }
+    console.log("Mortality Chart Canvas found:", ctx);
 
     if (chartInstances['chart-mortality']) {
         chartInstances['chart-mortality'].destroy();
@@ -1056,11 +1061,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mortalityObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                console.log("Mortality Section Intersecting! Rendering chart...");
                 renderMortalityChart();
                 mortalityObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
     const motivationSection = document.getElementById('motivation');
     if (motivationSection) mortalityObserver.observe(motivationSection);
